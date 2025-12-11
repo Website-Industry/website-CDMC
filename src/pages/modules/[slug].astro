@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/Section.astro';
 import CTA from '../../components/CTA.astro';
 import { getModuleBySlug, modules } from '../../data/modules';
-import { pricingTiers, pricingInfo } from '../../data/pricing';
+import { pricingTiers, pricingInfo, paymentOptions } from '../../data/pricing';
 
 export async function getStaticPaths() {
   return modules.map((module) => ({
@@ -117,16 +117,21 @@ if (!module) {
     <div class="max-w-3xl mx-auto">
       <p class="text-lg text-warm-700 mb-4">
         Les tarifs sont dégressifs selon le nombre de modules choisis. 
-        Engagement sur <strong>6 mois</strong>, avec possibilité de paiement mensuel.
+        <strong>Engagement sur 6 mois</strong> pour garantir la cohésion du groupe 
+        et une progression régulière.
       </p>
       <div class="bg-warm-100 rounded-lg p-6 mb-6">
         <p class="text-warm-800 mb-2">
           <strong>Exemple :</strong> Si tu choisis uniquement ce module, 
-          c'est <strong>25 € / mois</strong> (soit 150 € pour les 6 mois).
+          c'est <strong>{pricingTiers[0].cyclePrice} €</strong> pour les 6 mois.
         </p>
-        <p class="text-warm-700 text-sm">
+        <p class="text-warm-700 text-sm mb-3">
           Si tu combines plusieurs modules, les tarifs sont dégressifs. 
           Voir la <a href="/#tarifs" class="text-terracotta-600 underline hover:text-terracotta-700">page d'accueil</a> pour le détail complet.
+        </p>
+        <p class="text-warm-700 text-sm">
+          Plusieurs modalités de paiement sont proposées (en 1 fois, 2 fois ou 3 fois) 
+          pour créer de l'engagement et garantir ta place dans le groupe.
         </p>
       </div>
     </div>

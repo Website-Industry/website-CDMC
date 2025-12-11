@@ -4,7 +4,7 @@ import Section from '../components/Section.astro';
 import ModuleCard from '../components/ModuleCard.astro';
 import CTA from '../components/CTA.astro';
 import { modules } from '../data/modules';
-import { pricingTiers, pricingInfo } from '../data/pricing';
+import { pricingTiers, pricingInfo, paymentOptions } from '../data/pricing';
 ---
 
 <BaseLayout
@@ -137,11 +137,11 @@ import { pricingTiers, pricingInfo } from '../data/pricing';
     <div class="max-w-3xl mx-auto">
       <p class="text-lg text-warm-700 mb-6">
         Les tarifs sont dégressifs selon le nombre de modules choisis. 
-        Engagement sur <strong>6 mois</strong> (janvier à juin 2026), 
-        avec possibilité de paiement mensuel.
+        <strong>Engagement sur 6 mois</strong> (janvier à juin 2026) pour garantir 
+        la cohésion du groupe et une progression régulière.
       </p>
       
-      <div class="overflow-x-auto mb-6">
+      <div class="overflow-x-auto mb-8">
         <table class="w-full border-collapse bg-white rounded-lg shadow-md">
           <thead>
             <tr class="bg-warm-200">
@@ -149,10 +149,7 @@ import { pricingTiers, pricingInfo } from '../data/pricing';
                 Nombre de modules
               </th>
               <th class="border border-warm-300 px-4 py-3 text-left font-semibold text-warm-800">
-                Tarif mensuel
-              </th>
-              <th class="border border-warm-300 px-4 py-3 text-left font-semibold text-warm-800">
-                Total cycle (6 mois)
+                Tarif cycle complet (6 mois)
               </th>
             </tr>
           </thead>
@@ -162,10 +159,7 @@ import { pricingTiers, pricingInfo } from '../data/pricing';
                 <td class="border border-warm-300 px-4 py-3 text-warm-700">
                   {tier.modules} module{tier.modules > 1 ? 's' : ''}
                 </td>
-                <td class="border border-warm-300 px-4 py-3 text-warm-700">
-                  {tier.monthlyPrice} €
-                </td>
-                <td class="border border-warm-300 px-4 py-3 text-warm-700 font-semibold">
+                <td class="border border-warm-300 px-4 py-3 text-warm-700 font-semibold text-lg">
                   {tier.cyclePrice} €
                 </td>
               </tr>
@@ -174,13 +168,43 @@ import { pricingTiers, pricingInfo } from '../data/pricing';
         </table>
       </div>
 
+      <div class="mb-6">
+        <h3 class="text-2xl font-semibold text-warm-800 mb-4">
+          Modalités de paiement
+        </h3>
+        <p class="text-warm-700 mb-4">
+          Pour créer de l'engagement et garantir ta place dans le groupe, 
+          plusieurs modalités de paiement sont proposées :
+        </p>
+        <div class="space-y-4">
+          {paymentOptions.map((option) => {
+            const exampleAmounts = option.getAmount(150); // Exemple avec 1 module
+            const amountsDisplay = exampleAmounts.map(amt => `${amt} €`).join(' + ');
+            return (
+              <div class="bg-white rounded-lg p-6 border border-warm-200 shadow-sm">
+                <h4 class="font-semibold text-warm-800 mb-2">
+                  {option.label}
+                </h4>
+                <p class="text-warm-700 text-sm mb-3">
+                  {option.description}
+                </p>
+                <p class="text-warm-600 text-sm italic">
+                  Exemple pour 1 module ({pricingTiers[0].cyclePrice} €) : <strong>{amountsDisplay}</strong>
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
       <div class="bg-warm-100 rounded-lg p-6">
         <p class="text-warm-800 mb-2">
-          <strong>Paiement mensuel possible</strong> – Engagement sur 6 mois
+          <strong>Engagement sur 6 mois</strong> – Paiement selon la modalité choisie
         </p>
         <p class="text-warm-700 text-sm">
           Chaque séance dure 2h30. Les tarifs incluent l'accès au matériel pédagogique 
-          et aux ressources partagées.
+          et aux ressources partagées. Le paiement garantit ta place dans le groupe 
+          et permet une progression continue sur tout le cycle.
         </p>
       </div>
     </div>
