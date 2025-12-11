@@ -8,28 +8,38 @@ Les formulaires sont **temporairement désactivés** en attendant la configurati
 
 Une fois la configuration Notion terminée :
 
-1. **Ouvre le fichier** `src/components/ContactForm.astro`
+1. **Installe l'adaptateur Vercel** :
+   ```bash
+   npm install @astrojs/vercel
+   ```
 
-2. **Trouve la constante** en haut du fichier :
+2. **Modifie `astro.config.mjs`** :
+   - Importe l'adaptateur : `import vercel from '@astrojs/vercel/serverless';`
+   - Change `output: 'static'` en `output: 'hybrid'`
+   - Ajoute l'adaptateur : `adapter: vercel()`
+
+3. **Ouvre le fichier** `src/components/ContactForm.astro`
+
+4. **Trouve la constante** en haut du fichier :
    ```typescript
    const FORM_DISABLED = true;
    ```
 
-3. **Change la valeur** à `false` :
+5. **Change la valeur** à `false` :
    ```typescript
    const FORM_DISABLED = false;
    ```
 
-4. **Vérifie que les variables d'environnement** sont bien configurées :
+6. **Vérifie que les variables d'environnement** sont bien configurées :
    - `NOTION_TOKEN` dans `.env` (local) et dans Vercel (production)
    - `NOTION_DATABASE_ID` dans `.env` (local) et dans Vercel (production)
 
-5. **Teste les formulaires** :
+7. **Teste les formulaires** :
    - Formulaire de contact sur `/contact`
    - Formulaire de pré-inscription sur `/contact`
    - Vérifie que les données apparaissent bien dans Notion
 
-6. **Déploie** sur Vercel si tout fonctionne
+8. **Déploie** sur Vercel si tout fonctionne
 
 ## Note
 
