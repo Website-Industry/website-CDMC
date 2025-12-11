@@ -13,6 +13,17 @@ export interface Module {
   };
   dates: string[];
   niveau: 1 | 2 | 3; // 1 = débutant/sans prérequis, 2 = intermédiaire, 3 = prérequis nécessaires
+  capacity: {
+    min: number;
+    max: number;
+  };
+}
+
+export function formatCapacity(capacity: { min: number; max: number }): string {
+  if (capacity.min === capacity.max) {
+    return `${capacity.max} participant·es`;
+  }
+  return `${capacity.min} à ${capacity.max} participant·es`;
 }
 
 export const modules: Module[] = [
@@ -49,6 +60,10 @@ export const modules: Module[] = [
       '19 mai',
       '23 juin',
     ],
+    capacity: {
+      min: 4,
+      max: 9,
+    },
   },
   {
     id: 'theorie-intermediaire',
@@ -83,6 +98,10 @@ export const modules: Module[] = [
       '20 mai',
       '24 juin',
     ],
+    capacity: {
+      min: 4,
+      max: 6,
+    },
   },
   {
     id: 'mao',
@@ -117,6 +136,10 @@ export const modules: Module[] = [
       '21 mai',
       '25 juin',
     ],
+    capacity: {
+      min: 2,
+      max: 4,
+    },
   },
   {
     id: 'piano',
@@ -151,6 +174,10 @@ export const modules: Module[] = [
       '26 mai',
       '30 juin',
     ],
+    capacity: {
+      min: 2,
+      max: 4,
+    },
   },
   {
     id: 'rythmique',
@@ -185,6 +212,10 @@ export const modules: Module[] = [
       '28 mai',
       '2 juillet (cours de juin)',
     ],
+    capacity: {
+      min: 4,
+      max: 9,
+    },
   },
 ];
 

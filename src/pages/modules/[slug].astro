@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/Section.astro';
 import CTA from '../../components/CTA.astro';
 import LevelTag from '../../components/LevelTag.astro';
-import { getModuleBySlug, modules } from '../../data/modules';
+import { getModuleBySlug, modules, formatCapacity } from '../../data/modules';
 import { pricingTiers, pricingInfo, paymentOptions } from '../../data/pricing';
 
 export async function getStaticPaths() {
@@ -182,7 +182,7 @@ if (!module) {
           <strong>Lieu :</strong> {pricingInfo.location}
         </p>
         <p class="text-warm-700">
-          <strong>Capacité :</strong> {pricingInfo.capacity}
+          <strong>Capacité :</strong> {formatCapacity(module.capacity)} par module
         </p>
       </div>
     </div>
