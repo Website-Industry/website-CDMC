@@ -12,6 +12,7 @@ export interface Module {
     week: string;
   };
   dates: string[];
+  niveau: 1 | 2 | 3; // 1 = débutant/sans prérequis, 2 = intermédiaire, 3 = prérequis nécessaires
 }
 
 export const modules: Module[] = [
@@ -19,6 +20,7 @@ export const modules: Module[] = [
     id: 'theorie-debutant',
     slug: 'theorie-debutant',
     title: 'Théorie Débutant',
+    niveau: 1,
     shortDescription: 'Découvre les bases de la musique de manière décomplexée et pratique.',
     fullDescription: 'Un module pour découvrir les fondamentaux de la musique sans pression. On explore les notes, les intervalles, les accords de base, le tout en jouant, en écoutant et en discutant. Pas de récitation par cœur, juste de la compréhension et du plaisir.',
     targetAudience: 'Débutant·es absolu·es ou personnes qui veulent reprendre les bases. Aucun prérequis nécessaire.',
@@ -52,6 +54,7 @@ export const modules: Module[] = [
     id: 'theorie-intermediaire',
     slug: 'theorie-intermediaire',
     title: 'Théorie Intermédiaire',
+    niveau: 3,
     shortDescription: 'Approfondis ta compréhension musicale et développe ton autonomie.',
     fullDescription: 'Pour celles et ceux qui maîtrisent déjà les bases et veulent aller plus loin. On explore les modes, les fonctions harmoniques, les cadences, les substitutions. Toujours avec une approche pratique et une pédagogie adaptée au groupe.',
     targetAudience: 'Personnes qui connaissent déjà les bases (notes, intervalles, accords majeurs/mineurs) et veulent approfondir.',
@@ -85,6 +88,7 @@ export const modules: Module[] = [
     id: 'mao',
     slug: 'mao',
     title: 'MAO (Musique Assistée par Ordinateur)',
+    niveau: 1,
     shortDescription: 'Crée ta musique avec les outils modernes, de manière accessible et créative.',
     fullDescription: 'Un module pour découvrir la création musicale avec un ordinateur. On explore les DAW (Logic, Ableton, Reaper...), les plugins, la composition, l\'arrangement, le mixage de base. L\'objectif : te donner les clés pour créer ta musique, même si tu débutes.',
     targetAudience: 'Débutant·es ou intermédiaires en MAO. Pas besoin d\'être un·e pro, juste avoir envie de créer.',
@@ -118,6 +122,7 @@ export const modules: Module[] = [
     id: 'piano',
     slug: 'piano',
     title: 'Piano',
+    niveau: 1,
     shortDescription: 'Apprends le piano dans une ambiance chill, avec une pédagogie moderne.',
     fullDescription: 'Un module pour découvrir ou progresser au piano. On travaille la technique de base, la lecture (sans pression), l\'accompagnement, l\'improvisation. Toujours en lien avec la théorie, mais de manière pratique et sensorielle.',
     targetAudience: 'Débutant·es ou personnes qui ont quelques bases et veulent progresser. Pas besoin d\'apporter de matériel, piano et synthé disponibles sur place.',
@@ -151,6 +156,7 @@ export const modules: Module[] = [
     id: 'rythmique',
     slug: 'rythmique',
     title: 'Rythmique',
+    niveau: 1,
     shortDescription: 'Développe ton sens du rythme de manière ludique et efficace.',
     fullDescription: 'Un module pour travailler le rythme, la pulsation, les patterns. On utilise le corps, la voix, des instruments de percussion, des outils visuels. L\'objectif : développer ton feeling rythmique de manière naturelle et agréable.',
     targetAudience: 'Tous niveaux. Que tu aies des difficultés avec le rythme ou que tu veuilles approfondir, ce module est fait pour toi.',

@@ -1,0 +1,23 @@
+---
+interface Props {
+  level: 1 | 2 | 3;
+}
+
+const { level } = Astro.props;
+const stars = Array(level).fill('★');
+const emptyStars = Array(3 - level).fill('☆');
+---
+
+<span
+  class="inline-flex items-center gap-0.5 text-xs font-medium text-warm-700 bg-warm-100 px-2 py-1 rounded border border-warm-200"
+  aria-label={`Niveau ${level} sur 3`}
+  title={`Niveau ${level} sur 3`}
+>
+  <span class="text-terracotta-600 leading-none" aria-hidden="true">
+    {stars.join('')}
+  </span>
+  <span class="text-warm-300 leading-none" aria-hidden="true">
+    {emptyStars.join('')}
+  </span>
+</span>
+

@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/Section.astro';
 import CTA from '../../components/CTA.astro';
+import LevelTag from '../../components/LevelTag.astro';
 import { getModuleBySlug, modules } from '../../data/modules';
 import { pricingTiers, pricingInfo, paymentOptions } from '../../data/pricing';
 
@@ -26,17 +27,92 @@ if (!module) {
   <!-- Hero du module -->
   <Section id="module-hero" className="bg-gradient-to-b from-warm-100 to-warm-50">
     <div class="max-w-3xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-bold text-warm-800 mb-4">
-        {module.title}
-      </h1>
+      <div class="flex items-center justify-center gap-4 mb-4 flex-wrap">
+        <h1 class="text-4xl md:text-5xl font-bold text-warm-800">
+          {module.title}
+        </h1>
+        <LevelTag level={module.niveau} />
+      </div>
       <p class="text-xl text-warm-700 mb-6">
         {module.fullDescription}
       </p>
     </div>
   </Section>
 
+  <!-- Prérequis -->
+  <Section id="prerequis" title="Prérequis et niveau requis">
+    <div class="max-w-3xl mx-auto">
+      {module.niveau === 1 && (
+        <div class="bg-warm-50 border-l-4 border-terracotta-400 rounded-lg p-6">
+          <div class="flex items-start gap-3 mb-3">
+            <LevelTag level={1} />
+            <h3 class="text-xl font-semibold text-warm-800">
+              Aucun prérequis nécessaire
+            </h3>
+          </div>
+          <p class="text-warm-700 mb-3">
+            Ce module est accessible à toutes et tous, même si tu n'as jamais touché un instrument 
+            ou étudié la musique. On part de zéro, dans une ambiance bienveillante où chaque question 
+            est la bienvenue. L'important, c'est ta curiosité et ton envie d'apprendre, pas tes connaissances préalables.
+          </p>
+          <p class="text-warm-700 text-sm italic">
+            Tu peux venir avec tes doutes, tes questions, et même l'impression de ne rien connaître. 
+            C'est exactement pour ça qu'on est là.
+          </p>
+        </div>
+      )}
+      {module.niveau === 2 && (
+        <div class="bg-warm-50 border-l-4 border-terracotta-500 rounded-lg p-6">
+          <div class="flex items-start gap-3 mb-3">
+            <LevelTag level={2} />
+            <h3 class="text-xl font-semibold text-warm-800">
+              Quelques bases recommandées
+            </h3>
+          </div>
+          <p class="text-warm-700 mb-3">
+            Ce module est accessible si tu as déjà quelques notions de base en musique. 
+            Pas besoin d'être un·e expert·e, mais avoir déjà exploré un peu la musique (notes, accords de base, 
+            pratique d'un instrument) te permettra de mieux profiter du contenu.
+          </p>
+          <p class="text-warm-700 text-sm italic">
+            Si tu hésites sur ton niveau, n'hésite pas à me contacter pour en discuter. 
+            On peut toujours adapter selon ta situation.
+          </p>
+        </div>
+      )}
+      {module.niveau === 3 && (
+        <div class="bg-warm-50 border-l-4 border-terracotta-600 rounded-lg p-6">
+          <div class="flex items-start gap-3 mb-3">
+            <LevelTag level={3} />
+            <h3 class="text-xl font-semibold text-warm-800">
+              Prérequis nécessaires
+            </h3>
+          </div>
+          <p class="text-warm-700 mb-3">
+            Ce module nécessite d'avoir déjà des bases solides en musique. Tu dois connaître les notes, 
+            les intervalles, les accords majeurs et mineurs, et avoir une pratique régulière d'un instrument 
+            ou de la théorie musicale.
+          </p>
+          <p class="text-warm-700 mb-3">
+            <strong>Prérequis recommandés :</strong>
+          </p>
+          <ul class="list-disc list-inside text-warm-700 mb-3 space-y-1 ml-4">
+            <li>Connaissance des notes et de leur organisation</li>
+            <li>Compréhension des intervalles</li>
+            <li>Maîtrise des accords majeurs et mineurs de base</li>
+            <li>Pratique régulière de la musique (instrument ou théorie)</li>
+          </ul>
+          <p class="text-warm-700 text-sm italic">
+            Si tu n'es pas sûr·e d'avoir le niveau requis, je te recommande de commencer par le module 
+            Théorie Débutant pour poser de bonnes bases avant de venir ici.
+          </p>
+        </div>
+      )}
+    </div>
+  </Section>
+
   <!-- À qui s'adresse ce module -->
-  <Section id="target" title="À qui s'adresse ce module ?">
+  <Section id="target" title="À qui s'adresse ce module ?" className="bg-warm-50">
     <div class="max-w-3xl mx-auto">
       <p class="text-lg text-warm-700">
         {module.targetAudience}
