@@ -120,13 +120,13 @@ export const modules: Module[] = [
     title: 'Piano',
     shortDescription: 'Apprends le piano dans une ambiance chill, avec une pédagogie moderne.',
     fullDescription: 'Un module pour découvrir ou progresser au piano. On travaille la technique de base, la lecture (sans pression), l\'accompagnement, l\'improvisation. Toujours en lien avec la théorie, mais de manière pratique et sensorielle.',
-    targetAudience: 'Débutant·es ou personnes qui ont quelques bases et veulent progresser. Un clavier/piano nécessaire (on peut discuter des options).',
+    targetAudience: 'Débutant·es ou personnes qui ont quelques bases et veulent progresser. Pas besoin d\'apporter de matériel, piano et synthé disponibles sur place.',
     whatYouDo: [
       'Développer ta technique de base',
-      'Apprendre à lire une partition (sans stress)',
       'Explorer l\'accompagnement et les accords',
       'Improviser et créer tes propres mélodies',
       'Jouer ensemble et partager des moments musicaux',
+      'Pratiquer en rotation sur les instruments disponibles',
     ],
     highlights: [
       'Pédagogie adaptée à chacun·e',
