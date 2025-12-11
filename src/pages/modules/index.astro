@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+import ModuleCard from '../../components/ModuleCard.astro';
+import { modules } from '../../data/modules';
+---
+
+<BaseLayout
+  title="Les modules | CDMC"
+  description="Découvre tous les modules CDMC : Théorie Débutant, Théorie Intermédiaire, MAO, Piano, Rythmique. Cours de musique à Toulouse pour débutant·es et intermédiaires."
+>
+  <Section id="modules-list" title="Les modules CDMC">
+    <p class="text-lg text-warm-700 mb-8 max-w-3xl mx-auto text-center">
+      Cinq modules pour explorer la musique sous différents angles. 
+      Choisis celui ou ceux qui te correspondent, ou combine-les pour une approche complète.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {modules.map((module) => (
+        <ModuleCard module={module} />
+      ))}
+    </div>
+  </Section>
+</BaseLayout>
+

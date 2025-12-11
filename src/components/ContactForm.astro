@@ -1,0 +1,222 @@
+---
+interface Props {
+  type: 'contact' | 'inscription';
+  preselectedModule?: string;
+}
+
+const { type, preselectedModule } = Astro.props;
+const isInscription = type === 'inscription';
+---
+
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+</style>
+
+<form
+  method="POST"
+  action="#"
+  class="space-y-6"
+  data-form-type={type}
+  aria-label={isInscription ? 'Formulaire de pré-inscription' : 'Formulaire de contact'}
+>
+  <div>
+    <label for={`${type}-name`} class="block text-warm-800 font-medium mb-2">
+      Nom <span class="text-terracotta-600" aria-hidden="true">*</span>
+      <span class="sr-only"> (requis)</span>
+    </label>
+    <input
+      type="text"
+      id={`${type}-name`}
+      name="name"
+      required
+      aria-required="true"
+      class="w-full px-4 py-2 border border-warm-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent text-warm-900"
+    />
+  </div>
+
+  <div>
+    <label for={`${type}-email`} class="block text-warm-800 font-medium mb-2">
+      Email <span class="text-terracotta-600" aria-hidden="true">*</span>
+      <span class="sr-only"> (requis)</span>
+    </label>
+    <input
+      type="email"
+      id={`${type}-email`}
+      name="email"
+      required
+      aria-required="true"
+      class="w-full px-4 py-2 border border-warm-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent text-warm-900"
+    />
+  </div>
+
+  {isInscription ? (
+    <>
+      <div>
+        <fieldset>
+          <legend class="block text-warm-800 font-medium mb-2">
+            Modules souhaités <span class="text-terracotta-600" aria-hidden="true">*</span>
+            <span class="sr-only"> (requis)</span>
+          </legend>
+          <div class="space-y-2">
+            <label class="flex items-center">
+              <input
+                type="checkbox"
+                name="modules"
+                value="theorie-debutant"
+                class="mr-2 w-4 h-4 text-terracotta-600 focus:ring-terracotta-500"
+                checked={preselectedModule === 'theorie-debutant'}
+              />
+              <span class="text-warm-700">Théorie Débutant</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                type="checkbox"
+                name="modules"
+                value="theorie-intermediaire"
+                class="mr-2 w-4 h-4 text-terracotta-600 focus:ring-terracotta-500"
+                checked={preselectedModule === 'theorie-intermediaire'}
+              />
+              <span class="text-warm-700">Théorie Intermédiaire</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                type="checkbox"
+                name="modules"
+                value="mao"
+                class="mr-2 w-4 h-4 text-terracotta-600 focus:ring-terracotta-500"
+                checked={preselectedModule === 'mao'}
+              />
+              <span class="text-warm-700">MAO</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                type="checkbox"
+                name="modules"
+                value="piano"
+                class="mr-2 w-4 h-4 text-terracotta-600 focus:ring-terracotta-500"
+                checked={preselectedModule === 'piano'}
+              />
+              <span class="text-warm-700">Piano</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                type="checkbox"
+                name="modules"
+                value="rythmique"
+                class="mr-2 w-4 h-4 text-terracotta-600 focus:ring-terracotta-500"
+                checked={preselectedModule === 'rythmique'}
+              />
+              <span class="text-warm-700">Rythmique</span>
+            </label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div>
+        <label for={`${type}-comment`} class="block text-warm-800 font-medium mb-2">
+          Commentaire (optionnel)
+        </label>
+        <textarea
+          id={`${type}-comment`}
+          name="comment"
+          rows="4"
+          class="w-full px-4 py-2 border border-warm-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent text-warm-900"
+        ></textarea>
+      </div>
+    </>
+  ) : (
+    <div>
+      <label for={`${type}-message`} class="block text-warm-800 font-medium mb-2">
+        Message <span class="text-terracotta-600" aria-hidden="true">*</span>
+        <span class="sr-only"> (requis)</span>
+      </label>
+      <textarea
+        id={`${type}-message`}
+        name="message"
+        required
+        aria-required="true"
+        rows="6"
+        class="w-full px-4 py-2 border border-warm-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent text-warm-900"
+      ></textarea>
+    </div>
+  )}
+
+  <div id={`${type}-message`} role="alert" aria-live="polite" class="hidden mb-4"></div>
+
+  <button
+    type="submit"
+    id={`${type}-submit`}
+    class="w-full md:w-auto px-6 py-3 bg-terracotta-600 text-white rounded-lg font-semibold hover:bg-terracotta-700 focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+  >
+    <span id={`${type}-submit-text`}>
+      {isInscription ? 'Envoyer ma pré-inscription' : 'Envoyer le message'}
+    </span>
+    <span id={`${type}-submit-loading`} class="hidden">Envoi en cours...</span>
+  </button>
+</form>
+
+<script define:vars={{ formType: type }}>
+  const form = document.querySelector(`form[data-form-type="${formType}"]`) as HTMLFormElement;
+  const messageDiv = document.getElementById(`${formType}-message`) as HTMLDivElement;
+  const submitButton = document.getElementById(`${formType}-submit`) as HTMLButtonElement;
+  const submitText = document.getElementById(`${formType}-submit-text`) as HTMLSpanElement;
+  const submitLoading = document.getElementById(`${formType}-submit-loading`) as HTMLSpanElement;
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Réinitialiser les messages
+      messageDiv.classList.add('hidden');
+      messageDiv.className = 'hidden mb-4';
+      submitButton.disabled = true;
+      submitText.classList.add('hidden');
+      submitLoading.classList.remove('hidden');
+
+      const formData = new FormData(form);
+      const apiEndpoint = formType === 'inscription' ? '/api/inscription' : '/api/contact';
+
+      try {
+        const response = await fetch(apiEndpoint, {
+          method: 'POST',
+          body: formData,
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          // Succès
+          messageDiv.className = 'mb-4 p-4 bg-green-100 border border-green-400 text-green-800 rounded-lg';
+          messageDiv.textContent = data.message || 'Message envoyé avec succès !';
+          messageDiv.classList.remove('hidden');
+          form.reset();
+        } else {
+          // Erreur
+          messageDiv.className = 'mb-4 p-4 bg-red-100 border border-red-400 text-red-800 rounded-lg';
+          messageDiv.textContent = data.error || 'Une erreur est survenue.';
+          messageDiv.classList.remove('hidden');
+        }
+      } catch (error) {
+        // Erreur réseau
+        messageDiv.className = 'mb-4 p-4 bg-red-100 border border-red-400 text-red-800 rounded-lg';
+        messageDiv.textContent = 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer.';
+        messageDiv.classList.remove('hidden');
+      } finally {
+        submitButton.disabled = false;
+        submitText.classList.remove('hidden');
+        submitLoading.classList.add('hidden');
+      }
+    });
+  }
+</script>
+

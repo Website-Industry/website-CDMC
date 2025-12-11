@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const url = Astro.url;
+const moduleParam = url.searchParams.get('module');
+---
+
+<BaseLayout
+  title="Contact & Inscription | CDMC"
+  description="Contacte CDMC pour en savoir plus ou t'inscrire aux cours de musique à Toulouse. Formulaire de contact et pré-inscription."
+>
+  <Section id="contact-hero" className="bg-gradient-to-b from-warm-100 to-warm-50">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-warm-800 mb-6">
+        Contact & Inscription
+      </h1>
+      <p class="text-xl text-warm-700">
+        Tu veux en savoir plus, t'inscrire, poser une question ? 
+        Utilise l'un des formulaires ci-dessous.
+      </p>
+    </div>
+  </Section>
+
+  <Section id="contact-form" title="Formulaire de contact">
+    <div class="max-w-2xl mx-auto">
+      <p class="text-warm-700 mb-6">
+        Pour toute question générale, demande d'information, ou simplement pour discuter, 
+        utilise ce formulaire.
+      </p>
+      <ContactForm type="contact" />
+    </div>
+  </Section>
+
+  <Section id="inscription-form" title="Pré-inscription" className="bg-warm-50">
+    <div class="max-w-2xl mx-auto">
+      <p class="text-warm-700 mb-6">
+        Tu veux t'inscrire à un ou plusieurs modules ? Remplis ce formulaire de pré-inscription. 
+        Je te recontacterai rapidement pour finaliser ton inscription.
+      </p>
+      {moduleParam && (
+        <div class="bg-terracotta-50 border border-terracotta-200 rounded-lg p-4 mb-6">
+          <p class="text-terracotta-800">
+            <strong>Module présélectionné :</strong> Le module "{moduleParam}" est présélectionné ci-dessous. 
+            Tu peux en choisir d'autres si tu veux.
+          </p>
+        </div>
+      )}
+      <ContactForm type="inscription" preselectedModule={moduleParam || undefined} />
+    </div>
+  </Section>
+
+  <Section id="infos-complementaires">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-semibold text-warm-800 mb-4">
+        Informations complémentaires
+      </h2>
+      <div class="space-y-4 text-warm-700">
+        <p>
+          <strong>Réponse rapide :</strong> Je réponds généralement sous 24-48h à tous les messages.
+        </p>
+        <p>
+          <strong>Engagement :</strong> L'inscription se fait sur un cycle de 6 mois (janvier à juin 2026), 
+          avec possibilité de paiement mensuel.
+        </p>
+        <p>
+          <strong>Places limitées :</strong> Chaque module accueille entre 4 et 9 participant·es maximum. 
+          N'hésite pas à t'inscrire rapidement si tu es intéressé·e.
+        </p>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+

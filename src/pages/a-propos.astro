@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import CTA from '../components/CTA.astro';
+---
+
+<BaseLayout
+  title="À propos | CDMC"
+  description="Découvre qui anime CDMC et pourquoi cette approche de la musique. Une passion pour transmettre et proposer une alternative aux cours traditionnels."
+>
+  <Section id="a-propos-hero" className="bg-gradient-to-b from-warm-100 to-warm-50">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-warm-800 mb-6">
+        À propos
+      </h1>
+      <p class="text-xl text-warm-700">
+        Qui je suis, pourquoi CDMC, et ce qui me motive à transmettre 
+        ma passion pour la musique.
+      </p>
+    </div>
+  </Section>
+
+  <Section id="presentation" title="Qui je suis">
+    <div class="max-w-3xl mx-auto space-y-6">
+      <div class="bg-warm-100 rounded-lg p-6 mb-6">
+        <div class="w-32 h-32 bg-warm-300 rounded-full mx-auto mb-4 flex items-center justify-center">
+          <span class="text-4xl text-warm-600">👤</span>
+        </div>
+        <p class="text-center text-warm-700 text-sm italic">
+          Photo à venir
+        </p>
+      </div>
+      <p class="text-lg text-warm-700">
+        CDMC, c'est mon projet de proposer une alternative aux cours de musique traditionnels. 
+        Une approche où la compréhension prime sur la performance, où le plaisir d'apprendre 
+        est au centre, et où chacun·e peut progresser à son rythme.
+      </p>
+      <p class="text-lg text-warm-700">
+        Mon rapport à la musique ? C'est avant tout une passion, une envie de comprendre, 
+        de créer, de partager. J'ai appris la musique de manière classique, puis j'ai découvert 
+        d'autres façons de l'aborder : la MAO, l'improvisation, l'analyse, l'écoute active.
+      </p>
+      <p class="text-lg text-warm-700">
+        Et j'ai réalisé qu'apprendre la musique pouvait être différent. 
+        Plus accessible, plus décomplexé, plus humain. C'est ça, CDMC.
+      </p>
+    </div>
+  </Section>
+
+  <Section id="envie-transmettre" title="Mon envie de transmettre" className="bg-warm-50">
+    <div class="max-w-3xl mx-auto space-y-6">
+      <p class="text-lg text-warm-700">
+        Transmettre, c'est partager ce qui me passionne. Pas pour imposer une méthode, 
+        mais pour donner des clés, ouvrir des portes, permettre à chacun·e de trouver 
+        sa propre voie musicale.
+      </p>
+      <p class="text-lg text-warm-700">
+        J'ai vu trop de personnes qui voulaient apprendre la musique mais qui se sont découragées 
+        face à des méthodes rigides, à la pression, au jugement. J'ai aussi vu des personnes 
+        qui progressaient mieux dans un cadre bienveillant, où on peut poser des questions, 
+        expérimenter, se tromper.
+      </p>
+      <p class="text-lg text-warm-700">
+        Mon envie, c'est de créer ce cadre. Un espace où on apprend la musique autrement, 
+        avec plaisir, avec compréhension, avec respect.
+      </p>
+    </div>
+  </Section>
+
+  <Section id="alternative" title="Proposer une alternative">
+    <div class="max-w-3xl mx-auto space-y-6">
+      <p class="text-lg text-warm-700">
+        Les cours de musique traditionnels, c'est bien. Mais ce n'est pas pour tout le monde. 
+        Certain·es ont besoin d'un cadre plus souple, plus humain, plus adapté à leur rythme.
+      </p>
+      <p class="text-lg text-warm-700">
+        CDMC, c'est cette alternative. Un espace où :
+      </p>
+      <ul class="space-y-3 ml-4">
+        <li class="flex items-start">
+          <span class="text-terracotta-600 mr-3 mt-1">•</span>
+          <span class="text-warm-700 text-lg">On apprend sans pression, dans une ambiance chill</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-terracotta-600 mr-3 mt-1">•</span>
+          <span class="text-warm-700 text-lg">On comprend plutôt que de réciter par cœur</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-terracotta-600 mr-3 mt-1">•</span>
+          <span class="text-warm-700 text-lg">On discute, on papote, on expérimente</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-terracotta-600 mr-3 mt-1">•</span>
+          <span class="text-warm-700 text-lg">On utilise des outils modernes (piano, MAO, outils visuels)</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-terracotta-600 mr-3 mt-1">•</span>
+          <span class="text-warm-700 text-lg">On respecte le rythme de chacun·e</span>
+        </li>
+      </ul>
+    </div>
+  </Section>
+
+  <Section id="autres-activites" title="Autres activités" className="bg-warm-50">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-lg text-warm-700 mb-4">
+        En dehors de CDMC, je continue d'explorer la musique sous différents angles : 
+        la MAO, la composition, l'analyse, l'écoute. Ces explorations nourrissent ma pédagogie 
+        et me permettent de proposer des contenus variés et modernes.
+      </p>
+      <p class="text-lg text-warm-700">
+        La musique, c'est un vaste terrain de jeu. CDMC, c'est un espace pour le découvrir 
+        ensemble, avec plaisir et bienveillance.
+      </p>
+    </div>
+  </Section>
+
+  <Section id="cta" className="bg-gradient-to-b from-terracotta-50 to-warm-100">
+    <div class="text-center max-w-2xl mx-auto">
+      <h2 class="text-3xl font-bold text-warm-800 mb-4">
+        Envie d'en savoir plus ?
+      </h2>
+      <p class="text-lg text-warm-700 mb-8">
+        N'hésite pas à me contacter si tu as des questions sur CDMC, 
+        sur mon approche, ou si tu veux simplement discuter.
+      </p>
+      <CTA href="/contact" text="Me contacter" />
+    </div>
+  </Section>
+</BaseLayout>
+

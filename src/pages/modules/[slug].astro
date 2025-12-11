@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+import CTA from '../../components/CTA.astro';
+import { getModuleBySlug, modules } from '../../data/modules';
+import { pricingTiers, pricingInfo } from '../../data/pricing';
+
+export async function getStaticPaths() {
+  return modules.map((module) => ({
+    params: { slug: module.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const module = getModuleBySlug(slug!);
+
+if (!module) {
+  return Astro.redirect('/modules');
+}
+---
+
+<BaseLayout
+  title={`${module.title} | CDMC`}
+  description={module.shortDescription}
+>
+  <!-- Hero du module -->
+  <Section id="module-hero" className="bg-gradient-to-b from-warm-100 to-warm-50">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-warm-800 mb-4">
+        {module.title}
+      </h1>
+      <p class="text-xl text-warm-700 mb-6">
+        {module.fullDescription}
+      </p>
+    </div>
+  </Section>
+
+  <!-- À qui s'adresse ce module -->
+  <Section id="target" title="À qui s'adresse ce module ?">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-lg text-warm-700">
+        {module.targetAudience}
+      </p>
+    </div>
+  </Section>
+
+  <!-- Ce qu'on y fait -->
+  <Section id="content" title="Ce qu'on y fait" className="bg-warm-50">
+    <div class="max-w-3xl mx-auto">
+      <ul class="space-y-3">
+        {module.whatYouDo.map((item) => (
+          <li class="flex items-start">
+            <span class="text-terracotta-600 mr-3 mt-1">•</span>
+            <span class="text-warm-700 text-lg">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </Section>
+
+  <!-- Points forts -->
+  <Section id="highlights" title="Points forts pédagogiques">
+    <div class="max-w-3xl mx-auto">
+      <ul class="space-y-3">
+        {module.highlights.map((highlight) => (
+          <li class="flex items-start">
+            <span class="text-terracotta-600 mr-3 mt-1">✓</span>
+            <span class="text-warm-700 text-lg">{highlight}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </Section>
+
+  <!-- Planning et dates -->
+  <Section id="schedule" title="Planning et dates 2026" className="bg-warm-50">
+    <div class="max-w-3xl mx-auto space-y-6">
+      <div>
+        <h3 class="text-xl font-semibold text-warm-800 mb-2">
+          Rythme des séances
+        </h3>
+        <p class="text-warm-700">
+          <strong>{module.schedule.day}</strong> de la <strong>{module.schedule.week}</strong> de chaque mois.
+          Chaque séance dure <strong>2h30</strong>.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold text-warm-800 mb-4">
+          Dates du cycle (janvier à juin 2026)
+        </h3>
+        <div class="bg-white rounded-lg shadow-md p-6 border border-warm-200">
+          <ul class="space-y-2">
+            {module.dates.map((date) => (
+              <li class="flex items-center text-warm-700">
+                <span class="text-terracotta-600 mr-3">📅</span>
+                <span class="text-lg">{date}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-warm-100 rounded-lg p-6">
+        <p class="text-warm-800 mb-2">
+          <strong>Lieu :</strong> {pricingInfo.location}
+        </p>
+        <p class="text-warm-700">
+          <strong>Capacité :</strong> {pricingInfo.capacity}
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Tarifs -->
+  <Section id="pricing" title="Tarifs">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-lg text-warm-700 mb-4">
+        Les tarifs sont dégressifs selon le nombre de modules choisis. 
+        Engagement sur <strong>6 mois</strong>, avec possibilité de paiement mensuel.
+      </p>
+      <div class="bg-warm-100 rounded-lg p-6 mb-6">
+        <p class="text-warm-800 mb-2">
+          <strong>Exemple :</strong> Si tu choisis uniquement ce module, 
+          c'est <strong>25 € / mois</strong> (soit 150 € pour les 6 mois).
+        </p>
+        <p class="text-warm-700 text-sm">
+          Si tu combines plusieurs modules, les tarifs sont dégressifs. 
+          Voir la <a href="/#tarifs" class="text-terracotta-600 underline hover:text-terracotta-700">page d'accueil</a> pour le détail complet.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- CTA inscription -->
+  <Section id="cta" className="bg-gradient-to-b from-terracotta-50 to-warm-100">
+    <div class="text-center max-w-2xl mx-auto">
+      <h2 class="text-3xl font-bold text-warm-800 mb-4">
+        Intéressé·e par ce module ?
+      </h2>
+      <p class="text-lg text-warm-700 mb-8">
+        Inscris-toi ou pose-moi tes questions via le formulaire de contact.
+      </p>
+      <CTA 
+        href={`/contact?module=${module.id}`} 
+        text={`Je m'inscris à ${module.title}`} 
+      />
+    </div>
+  </Section>
+</BaseLayout>
+
