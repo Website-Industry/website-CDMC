@@ -2,6 +2,14 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "devCommand": "npm run dev",
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+  "functions": {
+    "api/**/*.mjs": {
+      "runtime": "nodejs20.x"
+    },
+    "**/_render.mjs": {
+      "runtime": "nodejs20.x"
+    }
+  }
 }
 

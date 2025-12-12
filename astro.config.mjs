@@ -6,7 +6,7 @@ import vercel from '@astrojs/vercel/serverless';
 export default defineConfig({
   integrations: [tailwind()],
   output: 'hybrid', // Permet les routes API
-  adapter: vercel(), // Adaptateur pour Vercel
+  adapter: vercel(),
   site: 'https://cdmc-toulouse.fr',
 });
 
