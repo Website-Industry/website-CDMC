@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" aria-label="CDMC - Les cours de musique les plus chill de Toulouse">
+  <defs>
+    <linearGradient id="ogGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#faf8f5;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f5f1e8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8ddd0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9d7a5a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f06d4a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fond -->
+  <rect width="1200" height="630" fill="url(#ogGrad)"/>
+  
+  <!-- Forme d'onde décorative en haut -->
+  <g transform="translate(600, 100)" opacity="0.3">
+    <path d="M -200 0 Q -150 -50, -100 0 Q -50 50, 0 0 Q 50 -50, 100 0 Q 150 50, 200 0" 
+          fill="none" 
+          stroke="url(#textGrad)" 
+          stroke-width="8" 
+          stroke-linecap="round"/>
+  </g>
+  
+  <!-- Logo/CDMC au centre -->
+  <g transform="translate(600, 280)">
+    <!-- Forme d'onde principale -->
+    <path d="M -120 0 Q -80 -60, -40 0 Q 0 60, 40 0 Q 80 -60, 120 0" 
+          fill="none" 
+          stroke="url(#textGrad)" 
+          stroke-width="6" 
+          stroke-linecap="round"
+          opacity="0.9"/>
+    
+    <!-- Texte CDMC -->
+    <text x="0" y="20" 
+          font-family="Inter, sans-serif" 
+          font-size="96" 
+          font-weight="700" 
+          fill="url(#textGrad)"
+          text-anchor="middle"
+          letter-spacing="-3">
+      CDMC
+    </text>
+  </g>
+  
+  <!-- Sous-titre -->
+  <text x="600" y="380" 
+        font-family="Inter, sans-serif" 
+        font-size="42" 
+        font-weight="600" 
+        fill="#7d6149"
+        text-anchor="middle">
+    Les cours de musique les plus chill de Toulouse
+  </text>
+  
+  <!-- Description -->
+  <text x="600" y="450" 
+        font-family="Inter, sans-serif" 
+        font-size="28" 
+        font-weight="400" 
+        fill="#5d4838"
+        text-anchor="middle"
+        opacity="0.8">
+    Apprendre la musique autrement • Sans pression • Avec plaisir
+  </text>
+  
+  <!-- Notes de musique décoratives -->
+  <g transform="translate(200, 500)" opacity="0.4">
+    <circle cx="0" cy="0" r="4" fill="#f06d4a"/>
+    <path d="M 0 0 L 0 20 Q 3 18, 6 20" fill="none" stroke="#f06d4a" stroke-width="3"/>
+  </g>
+  <g transform="translate(1000, 500)" opacity="0.4">
+    <circle cx="0" cy="0" r="4" fill="#9d7a5a"/>
+    <path d="M 0 0 L 0 20 Q 3 18, 6 20" fill="none" stroke="#9d7a5a" stroke-width="3"/>
+  </g>
+</svg>
+

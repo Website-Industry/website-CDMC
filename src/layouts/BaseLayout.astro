@@ -6,25 +6,56 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
 }
 
-const { title, description = 'Apprendre la musique autrement à Toulouse. Cours de musique chill, bienveillants et décomplexés pour débutant·es et intermédiaires.' } = Astro.props;
----
+const { title, description = 'Apprendre la musique autrement à Toulouse. Cours de musique chill, bienveillants et décomplexés pour débutant·es et intermédiaires.', image } = Astro.props;
 
+const siteUrl = Astro.site ?? 'https://cdmc-toulouse.fr';
+const currentPath = Astro.url.pathname + (Astro.url.search ?? '');
+const currentUrl = new URL(currentPath, siteUrl);
+const ogImage = image 
+  ? (image.startsWith('http') ? image : `${siteUrl}${image}`) 
+  : `${siteUrl}/og-image.svg`;
+const siteName = 'CDMC - Les cours de musique les plus chill de Toulouse';
+---
 <!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={currentUrl.toString()} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="fr_FR" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={currentUrl.toString()} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    
     <title>{title}</title>
   </head>
   <body class="min-h-screen flex flex-col bg-warm-50 text-warm-900 antialiased">
