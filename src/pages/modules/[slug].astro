@@ -199,7 +199,8 @@ if (!module) {
       <div class="bg-warm-100 rounded-lg p-6 mb-6">
         <p class="text-warm-800 mb-2">
           <strong>Exemple :</strong> Si tu choisis uniquement ce module, 
-          c'est <strong>{pricingTiers[0].cyclePrice} €</strong> pour les 6 mois.
+          c'est <strong class="text-terracotta-700 text-xl">{Math.round(pricingTiers[0].cyclePrice / 6)} €/mois</strong> 
+          (soit {pricingTiers[0].cyclePrice} € pour les 6 mois).
         </p>
         <p class="text-warm-700 text-sm mb-3">
           Si tu combines plusieurs modules, les tarifs sont dégressifs. 

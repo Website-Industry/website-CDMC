@@ -147,22 +147,31 @@ import { pricingTiers, pricingInfo, paymentOptions } from '../data/pricing';
               <th class="border border-warm-300 px-4 py-3 text-left font-semibold text-warm-800">
                 Nombre de modules
               </th>
-              <th class="border border-warm-300 px-4 py-3 text-left font-semibold text-warm-800">
-                Tarif cycle complet (6 mois)
+              <th class="border border-warm-300 px-4 py-3 text-left font-semibold text-warm-800 bg-terracotta-50">
+                Prix mensuel
+              </th>
+              <th class="border border-warm-300 px-4 py-3 text-left font-semibold text-warm-800 text-sm">
+                Cycle complet (6 mois)
               </th>
             </tr>
           </thead>
           <tbody>
-            {pricingTiers.map((tier) => (
-              <tr class="hover:bg-warm-50">
-                <td class="border border-warm-300 px-4 py-3 text-warm-700">
-                  {tier.modules} module{tier.modules > 1 ? 's' : ''}
-                </td>
-                <td class="border border-warm-300 px-4 py-3 text-warm-700 font-semibold text-lg">
-                  {tier.cyclePrice} €
-                </td>
-              </tr>
-            ))}
+            {pricingTiers.map((tier) => {
+              const monthlyPrice = Math.round(tier.cyclePrice / 6);
+              return (
+                <tr class="hover:bg-warm-50">
+                  <td class="border border-warm-300 px-4 py-3 text-warm-700">
+                    {tier.modules} module{tier.modules > 1 ? 's' : ''}
+                  </td>
+                  <td class="border border-warm-300 px-4 py-3 text-terracotta-700 font-bold text-2xl bg-terracotta-50">
+                    {monthlyPrice} €<span class="text-sm font-normal text-warm-600">/mois</span>
+                  </td>
+                  <td class="border border-warm-300 px-4 py-3 text-warm-600 text-sm">
+                    {tier.cyclePrice} €
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
