@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 60" aria-label="CDMC">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9d7a5a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f06d4a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Forme organique abstraite (onde sonore stylisée) -->
+  <g transform="translate(5, 10)">
+    <!-- Première onde -->
+    <path d="M 0 20 Q 8 10, 16 20 Q 24 30, 32 20" 
+          fill="none" 
+          stroke="url(#logoGrad)" 
+          stroke-width="2.5" 
+          stroke-linecap="round"/>
+    
+    <!-- Deuxième onde (plus petite) -->
+    <path d="M 8 25 Q 12 20, 16 25 Q 20 30, 24 25" 
+          fill="none" 
+          stroke="url(#logoGrad)" 
+          stroke-width="2" 
+          stroke-linecap="round"
+          opacity="0.7"/>
+    
+    <!-- Point central -->
+    <circle cx="16" cy="22" r="3" fill="url(#logoGrad)"/>
+  </g>
+  
+  <!-- Texte CDMC avec style moderne -->
+  <text x="50" y="38" 
+        font-family="Inter, sans-serif" 
+        font-size="28" 
+        font-weight="700" 
+        fill="url(#logoGrad)"
+        letter-spacing="-0.5">
+    CDMC
+  </text>
+  
+  <!-- Petite note de musique décorative -->
+  <g transform="translate(150, 15)" opacity="0.6">
+    <circle cx="0" cy="0" r="2.5" fill="#f06d4a"/>
+    <path d="M 0 0 L 0 12 Q 2 10, 4 12" 
+          fill="none" 
+          stroke="#f06d4a" 
+          stroke-width="1.5" 
+          stroke-linecap="round"/>
+  </g>
+</svg>
