@@ -1,5 +1,7 @@
 # CDMC - Site vitrine
 
+[![Vercel](https://vercelbadges.vercel.app/api/marcchartons-projects/cdmc)](https://vercel.com/marcchartons-projects/cdmc)
+
 Site vitrine statique pour les cours de musique CDMC à Toulouse.
 
 ## 🚀 Développement
