@@ -32,7 +32,7 @@ Ce guide explique comment configurer Notion pour recevoir les données des formu
 | **Email** | `Email` | - |
 | **Type** | `Select` | Options : `Contact`, `Inscription` |
 | **Message** | `Text` | - |
-| **Modules** | `Multi-select` | Options : `theorie-debutant`, `theorie-intermediaire`, `mao`, `piano`, `rythmique` |
+| **Modules** | `Multi-select` | Options : `theorie-debutant`, `theorie-intermediaire`, `theorie-avancee`, `mao`, `piano`, `rythmique` |
 | **Commentaire** | `Text` | - |
 | **Date** | `Date` | - |
 
@@ -47,6 +47,7 @@ Ce guide explique comment configurer Notion pour recevoir les données des formu
 - **Modules** : Type `Multi-select` avec les options :
   - `theorie-debutant`
   - `theorie-intermediaire`
+  - `theorie-avancee`
   - `mao`
   - `piano`
   - `rythmique`

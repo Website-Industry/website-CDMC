@@ -116,6 +116,17 @@ const FORM_DISABLED = false;
               <input
                 type="checkbox"
                 name="modules"
+                value="theorie-avancee"
+                disabled={FORM_DISABLED}
+                class="mr-2 w-4 h-4 text-terracotta-600 focus:ring-terracotta-500 disabled:cursor-not-allowed"
+                checked={preselectedModule === 'theorie-avancee'}
+              />
+              <span class="text-warm-700">Théorie Avancée</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                type="checkbox"
+                name="modules"
                 value="mao"
                 disabled={FORM_DISABLED}
                 class="mr-2 w-4 h-4 text-terracotta-600 focus:ring-terracotta-500 disabled:cursor-not-allowed"
