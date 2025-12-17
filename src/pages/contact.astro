@@ -23,17 +23,7 @@ const moduleParam = url.searchParams.get('module');
     </div>
   </Section>
 
-  <Section id="contact-form" title="Formulaire de contact">
-    <div class="max-w-2xl mx-auto">
-      <p class="text-warm-700 mb-6">
-        Pour toute question générale, demande d'information, ou simplement pour discuter, 
-        utilise ce formulaire.
-      </p>
-      <ContactForm type="contact" />
-    </div>
-  </Section>
-
-  <Section id="inscription-form" title="Pré-inscription" className="bg-warm-50">
+  <Section id="inscription-form" title="Pré-inscription">
     <div class="max-w-2xl mx-auto">
       <p class="text-warm-700 mb-6">
         Tu veux t'inscrire à un ou plusieurs modules ? Remplis ce formulaire de pré-inscription. 
@@ -48,6 +38,44 @@ const moduleParam = url.searchParams.get('module');
         </div>
       )}
       <ContactForm type="inscription" preselectedModule={moduleParam || undefined} />
+      <script is:inline>
+        // Pré-cocher la checkbox du module sélectionné depuis l'URL
+        (function() {
+          const urlParams = new URLSearchParams(window.location.search);
+          const moduleId = urlParams.get('module');
+          
+          if (!moduleId) return;
+          
+          function checkModule() {
+            const checkbox = document.querySelector(`input[name="modules"][value="${moduleId}"]`);
+            if (checkbox && !checkbox.checked) {
+              checkbox.checked = true;
+              checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+          }
+          
+          // Essayer plusieurs fois avec des délais pour s'assurer que le formulaire est rendu
+          [0, 100, 300, 500].forEach(delay => {
+            setTimeout(checkModule, delay);
+          });
+          
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+              setTimeout(checkModule, 100);
+            });
+          }
+        })();
+      </script>
+    </div>
+  </Section>
+
+  <Section id="contact-form" title="Formulaire de contact" className="bg-warm-50">
+    <div class="max-w-2xl mx-auto">
+      <p class="text-warm-700 mb-6">
+        Pour toute question générale, demande d'information, ou simplement pour discuter, 
+        utilise ce formulaire.
+      </p>
+      <ContactForm type="contact" />
     </div>
   </Section>
 
@@ -67,7 +95,7 @@ const moduleParam = url.searchParams.get('module');
         </p>
         <p>
           <strong>Places limitées :</strong> Chaque module accueille entre 4 et 9 participant·es maximum. 
-          N'hésite pas à t'inscrire rapidement si tu es intéressé·e.
+          N'hésite pas à te pré-inscrire si tu es intéressé·e, nous pourrons discuter sans engagement.
         </p>
       </div>
     </div>
