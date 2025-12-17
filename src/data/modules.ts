@@ -50,7 +50,7 @@ export const modules: Module[] = [
     ],
     schedule: {
       day: 'Mardi',
-      week: 'Semaine 3',
+      week: 'Semaine Théorie',
     },
     dates: [
       '20 janvier',
@@ -58,7 +58,6 @@ export const modules: Module[] = [
       '24 mars',
       '21 avril',
       '19 mai',
-      '23 juin',
     ],
     capacity: {
       min: 4,
@@ -69,7 +68,7 @@ export const modules: Module[] = [
     id: 'theorie-intermediaire',
     slug: 'theorie-intermediaire',
     title: 'Théorie Intermédiaire',
-    niveau: 3,
+    niveau: 2,
     shortDescription: 'Approfondis ta compréhension musicale et développe ton autonomie.',
     fullDescription: 'Pour celles et ceux qui maîtrisent déjà les bases et veulent aller plus loin. On explore les modes, les fonctions harmoniques, les cadences, les substitutions. Toujours avec une approche pratique et une pédagogie adaptée au groupe.',
     targetAudience: 'Personnes qui connaissent déjà les bases (notes, intervalles, accords majeurs/mineurs) et veulent approfondir.',
@@ -88,7 +87,7 @@ export const modules: Module[] = [
     ],
     schedule: {
       day: 'Mercredi',
-      week: 'Semaine 3',
+      week: 'Semaine Théorie',
     },
     dates: [
       '21 janvier',
@@ -96,7 +95,43 @@ export const modules: Module[] = [
       '25 mars',
       '22 avril',
       '20 mai',
-      '24 juin',
+    ],
+    capacity: {
+      min: 4,
+      max: 6,
+    },
+  },
+  {
+    id: 'theorie-avancee',
+    slug: 'theorie-avancee',
+    title: 'Théorie Avancée',
+    niveau: 3,
+    shortDescription: 'Creuse un sujet spécifique à chaque cours et explore-le dans tous les sens pour une compréhension approfondie.',
+    fullDescription: 'Un module pour celles et ceux qui maîtrisent déjà les concepts intermédiaires et veulent aller plus loin. À chaque séance, on prend un sujet précis et on le détricote dans tous les sens. Une approche de spécialité : un sujet, une séance, une exploration en profondeur.',
+    targetAudience: 'Personnes qui ont maîtrisé les concepts du module Intermédiaire (fonctions harmoniques, cadences, accords enrichis de base) et souhaitent approfondir des sujets spécifiques de manière détaillée. Ce module suppose que ces bases sont acquises et maîtrisées.',
+    whatYouDo: [
+      'Explorer un sujet spécifique par séance en profondeur',
+      'Détricoter chaque concept dans tous les sens',
+      'Découvrir les modes des gammes mineures (naturelle, harmonique, mélodique)',
+      'Explorer le triton et toutes ses utilisations possibles',
+      'Varier les approches d\'un même concept (6 façons de faire un II-V-I)',
+    ],
+    highlights: [
+      'Approche de spécialité : un sujet, une séance',
+      'Exploration approfondie plutôt que survol',
+      'Compréhension complète de chaque concept',
+      'Groupe de 4 à 6 personnes maximum',
+    ],
+    schedule: {
+      day: 'Jeudi',
+      week: 'Semaine Théorie',
+    },
+    dates: [
+      '22 janvier',
+      '19 février',
+      '26 mars',
+      '23 avril',
+      '21 mai',
     ],
     capacity: {
       min: 4,
@@ -125,16 +160,15 @@ export const modules: Module[] = [
       'Groupe de 4 à 9 personnes maximum',
     ],
     schedule: {
-      day: 'Jeudi',
-      week: 'Semaine 3',
+      day: 'Mercredi',
+      week: 'Semaine Pratique',
     },
     dates: [
-      '22 janvier',
-      '19 février',
-      '26 mars',
-      '23 avril',
-      '21 mai',
-      '25 juin',
+      '28 janvier',
+      '25 février',
+      '1 avril',
+      '29 avril',
+      '27 mai',
     ],
     capacity: {
       min: 2,
@@ -164,7 +198,7 @@ export const modules: Module[] = [
     ],
     schedule: {
       day: 'Mardi',
-      week: 'Semaine 4',
+      week: 'Semaine Pratique',
     },
     dates: [
       '27 janvier',
@@ -172,7 +206,6 @@ export const modules: Module[] = [
       '31 mars',
       '28 avril',
       '26 mai',
-      '30 juin',
     ],
     capacity: {
       min: 2,
@@ -202,7 +235,7 @@ export const modules: Module[] = [
     ],
     schedule: {
       day: 'Jeudi',
-      week: 'Semaine 4',
+      week: 'Semaine Pratique',
     },
     dates: [
       '29 janvier',
@@ -210,7 +243,6 @@ export const modules: Module[] = [
       '2 avril (cours de mars)',
       '30 avril',
       '28 mai',
-      '2 juillet (cours de juin)',
     ],
     capacity: {
       min: 4,

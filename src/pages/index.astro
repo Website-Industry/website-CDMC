@@ -56,7 +56,7 @@ import { pricingTiers, pricingInfo, paymentOptions } from '../data/pricing';
   <!-- Modules -->
   <Section id="modules" title="Les modules" className="bg-warm-50">
     <p class="text-lg text-warm-700 mb-8 max-w-3xl mx-auto text-center">
-      Cinq modules pour explorer la musique sous différents angles. 
+      Six modules pour explorer la musique sous différents angles. 
       Choisis celui ou ceux qui te correspondent, ou combine-les pour une approche complète.
     </p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
@@ -83,7 +83,7 @@ import { pricingTiers, pricingInfo, paymentOptions } from '../data/pricing';
           </li>
           <li class="flex items-start">
             <span class="text-terracotta-600 mr-2">•</span>
-            <span>Cycle de <strong>6 mois</strong> (janvier à juin 2026)</span>
+            <span>Cycle de <strong>5 mois</strong> (janvier à mai 2026)</span>
           </li>
           <li class="flex items-start">
             <span class="text-terracotta-600 mr-2">•</span>
@@ -101,17 +101,22 @@ import { pricingTiers, pricingInfo, paymentOptions } from '../data/pricing';
         </p>
         <div class="bg-warm-100 rounded-lg p-6 space-y-4">
           <div>
-            <h4 class="font-semibold text-warm-800 mb-2">Semaine 3 :</h4>
+            <h4 class="font-semibold text-warm-800 mb-2">
+              <a href="/modules#organisation-semaines" class="text-warm-800 hover:text-terracotta-600 underline">Semaine Théorie</a> :
+            </h4>
             <ul class="space-y-1 text-warm-700 ml-4">
               <li>• Mardi : Théorie Débutant</li>
               <li>• Mercredi : Théorie Intermédiaire</li>
-              <li>• Jeudi : MAO</li>
+              <li>• Jeudi : Théorie Avancée</li>
             </ul>
           </div>
           <div>
-            <h4 class="font-semibold text-warm-800 mb-2">Semaine 4 :</h4>
+            <h4 class="font-semibold text-warm-800 mb-2">
+              <a href="/modules#organisation-semaines" class="text-warm-800 hover:text-terracotta-600 underline">Semaine Pratique</a> :
+            </h4>
             <ul class="space-y-1 text-warm-700 ml-4">
               <li>• Mardi : Piano</li>
+              <li>• Mercredi : MAO</li>
               <li>• Jeudi : Rythmique</li>
             </ul>
           </div>
@@ -136,7 +141,7 @@ import { pricingTiers, pricingInfo, paymentOptions } from '../data/pricing';
     <div class="max-w-3xl mx-auto">
       <p class="text-lg text-warm-700 mb-6">
         Les tarifs sont dégressifs selon le nombre de modules choisis. 
-        <strong>Engagement sur 6 mois</strong> (janvier à juin 2026) pour garantir 
+        <strong>Engagement sur 5 mois</strong> (janvier à mai 2026) pour garantir 
         la cohésion du groupe et une progression régulière.
       </p>
       
@@ -151,13 +156,13 @@ import { pricingTiers, pricingInfo, paymentOptions } from '../data/pricing';
                 Prix mensuel
               </th>
               <th class="border border-warm-300 px-4 py-3 text-left font-semibold text-warm-800 text-sm">
-                Cycle complet (6 mois)
+                Cycle complet (5 mois)
               </th>
             </tr>
           </thead>
           <tbody>
             {pricingTiers.map((tier) => {
-              const monthlyPrice = Math.round(tier.cyclePrice / 6);
+              const monthlyPrice = Math.round(tier.cyclePrice / 5);
               return (
                 <tr class="hover:bg-warm-50">
                   <td class="border border-warm-300 px-4 py-3 text-warm-700">
@@ -186,8 +191,10 @@ import { pricingTiers, pricingInfo, paymentOptions } from '../data/pricing';
         </p>
         <div class="space-y-4">
           {paymentOptions.map((option) => {
-            const exampleAmounts = option.getAmount(150); // Exemple avec 1 module
-            const amountsDisplay = exampleAmounts.map(amt => `${amt} €`).join(' + ');
+            const exampleAmounts1 = option.getAmount(pricingTiers[0].cyclePrice); // Exemple avec 1 module
+            const amountsDisplay1 = exampleAmounts1.map(amt => `${amt} €`).join(' + ');
+            const exampleAmounts2 = option.getAmount(pricingTiers[1].cyclePrice); // Exemple avec 2 modules
+            const amountsDisplay2 = exampleAmounts2.map(amt => `${amt} €`).join(' + ');
             return (
               <div class="bg-white rounded-lg p-6 border border-warm-200 shadow-sm">
                 <h4 class="font-semibold text-warm-800 mb-2">
@@ -196,9 +203,14 @@ import { pricingTiers, pricingInfo, paymentOptions } from '../data/pricing';
                 <p class="text-warm-700 text-sm mb-3">
                   {option.description}
                 </p>
-                <p class="text-warm-600 text-sm italic">
-                  Exemple pour 1 module ({pricingTiers[0].cyclePrice} €) : <strong>{amountsDisplay}</strong>
-                </p>
+                <div class="text-warm-600 text-sm italic space-y-1">
+                  <p>
+                    Exemple pour 1 module ({pricingTiers[0].cyclePrice} €) : <strong>{amountsDisplay1}</strong>
+                  </p>
+                  <p>
+                    Exemple pour 2 modules ({pricingTiers[1].cyclePrice} €) : <strong>{amountsDisplay2}</strong>
+                  </p>
+                </div>
               </div>
             );
           })}
@@ -207,7 +219,7 @@ import { pricingTiers, pricingInfo, paymentOptions } from '../data/pricing';
 
       <div class="bg-warm-100 rounded-lg p-6">
         <p class="text-warm-800 mb-2">
-          <strong>Engagement sur 6 mois</strong> – Paiement selon la modalité choisie
+          <strong>Engagement sur 5 mois</strong> – Paiement selon la modalité choisie
         </p>
         <p class="text-warm-700 text-sm">
           Chaque séance dure 2h30. Les tarifs incluent l'accès au matériel pédagogique 
@@ -298,7 +310,7 @@ import { pricingTiers, pricingInfo, paymentOptions } from '../data/pricing';
           Puis-je essayer un module avant de m'engager ?
         </summary>
         <p class="text-warm-700 mt-2">
-          L'engagement se fait sur 6 mois pour garantir la cohésion du groupe et la progression. 
+          L'engagement se fait sur 5 mois pour garantir la cohésion du groupe et la progression. 
           Si tu as des questions, n'hésite pas à me contacter via le formulaire pour en discuter.
         </p>
       </details>
@@ -381,10 +393,10 @@ import { pricingTiers, pricingInfo, paymentOptions } from '../data/pricing';
       </details>
       <details class="bg-warm-100 rounded-lg p-6">
         <summary class="font-semibold text-warm-800 cursor-pointer mb-2">
-          Que se passe-t-il après les 6 mois ?
+          Que se passe-t-il après les 5 mois ?
         </summary>
         <p class="text-warm-700 mt-2">
-          Après le cycle de 6 mois (janvier à juin), on peut discuter ensemble de la suite. 
+          Après le cycle de 5 mois (janvier à mai), on peut discuter ensemble de la suite. 
           Si tu veux continuer, on peut envisager un nouveau cycle ou adapter selon tes besoins. 
           L'objectif, c'est que tu repartes avec des outils concrets pour continuer ta pratique musicale, 
           que ce soit seul·e ou en groupe.

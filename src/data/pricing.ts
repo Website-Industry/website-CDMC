@@ -6,23 +6,23 @@ export interface PricingTier {
 export const pricingTiers: PricingTier[] = [
   {
     modules: 1,
-    cyclePrice: 150,
+    cyclePrice: 125, // 25€/mois × 5 mois
   },
   {
     modules: 2,
-    cyclePrice: 270,
+    cyclePrice: 225, // 45€/mois × 5 mois
   },
   {
     modules: 3,
-    cyclePrice: 360,
+    cyclePrice: 300, // 60€/mois × 5 mois
   },
   {
     modules: 4,
-    cyclePrice: 420,
+    cyclePrice: 350, // 70€/mois × 5 mois
   },
   {
     modules: 5,
-    cyclePrice: 450,
+    cyclePrice: 375, // 75€/mois × 5 mois
   },
 ];
 
@@ -45,7 +45,7 @@ export const paymentOptions: PaymentOption[] = [
   {
     id: 'two',
     label: 'Paiement en deux fois',
-    description: '50% au début, 50% à mi-parcours (mars)',
+    description: '50% en janvier, 50% en mars',
     installments: 2,
     getAmount: (total) => {
       const half = Math.round(total / 2);
@@ -55,7 +55,7 @@ export const paymentOptions: PaymentOption[] = [
   {
     id: 'three',
     label: 'Paiement en trois fois',
-    description: '33% au début, 33% en février, 34% en avril',
+    description: '33% en janvier, 33% en mars, 34% en mai',
     installments: 3,
     getAmount: (total) => {
       const third = Math.round(total / 3);
@@ -65,9 +65,9 @@ export const paymentOptions: PaymentOption[] = [
 ];
 
 export const pricingInfo = {
-  cycleDuration: 6,
-  cycleMonths: 'janvier à juin',
-  commitment: 'Engagement sur 6 mois',
+  cycleDuration: 5,
+  cycleMonths: 'janvier à mai',
+  commitment: 'Engagement sur 5 mois',
   sessionDuration: '2h30',
   capacity: '4 à 9 participant·es par module',
   location: 'Dans un grand salon aménagé, à Toulouse',

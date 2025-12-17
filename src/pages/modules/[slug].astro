@@ -59,6 +59,11 @@ if (!module) {
             Tu peux venir avec tes doutes, tes questions, et même l'impression de ne rien connaître. 
             C'est exactement pour ça qu'on est là.
           </p>
+          <p class="text-warm-700 text-sm mt-3">
+            Si tu as des questions ou besoin de plus d'informations pour te situer, 
+            <a href="/contact" class="text-terracotta-600 underline hover:text-terracotta-700 font-medium">n'hésite pas à me contacter</a>. 
+            J'ai des outils à disposition pour t'aider à te situer et on peut le faire ensemble.
+          </p>
         </div>
       )}
       {module.niveau === 2 && (
@@ -74,9 +79,14 @@ if (!module) {
             Pas besoin d'être un·e expert·e, mais avoir déjà exploré un peu la musique (notes, accords de base, 
             pratique d'un instrument) te permettra de mieux profiter du contenu.
           </p>
-          <p class="text-warm-700 text-sm italic">
-            Si tu hésites sur ton niveau, n'hésite pas à me contacter pour en discuter. 
-            On peut toujours adapter selon ta situation.
+          <p class="text-warm-700 text-sm italic mb-3">
+            Si tu n'es pas sûr·e d'avoir le niveau requis, je te recommande de commencer par le module 
+            <a href="/modules/theorie-debutant" class="text-terracotta-600 underline hover:text-terracotta-700 font-medium">Théorie Débutant</a> pour poser de bonnes bases avant de venir ici.
+          </p>
+          <p class="text-warm-700 text-sm">
+            Si tu as besoin de plus d'informations pour te situer, 
+            <a href="/contact" class="text-terracotta-600 underline hover:text-terracotta-700 font-medium">n'hésite pas à me contacter</a>. 
+            J'ai des outils à disposition pour t'aider à te situer et on peut le faire ensemble.
           </p>
         </div>
       )}
@@ -89,22 +99,29 @@ if (!module) {
             </h3>
           </div>
           <p class="text-warm-700 mb-3">
-            Ce module nécessite d'avoir déjà des bases solides en musique. Tu dois connaître les notes, 
-            les intervalles, les accords majeurs et mineurs, et avoir une pratique régulière d'un instrument 
-            ou de la théorie musicale.
+            Ce module nécessite d'avoir <strong>maîtrisé les concepts du module Intermédiaire</strong> ou d'avoir 
+            des connaissances équivalentes. Ce n'est pas un module pour tout le monde, mais si tu as les bases 
+            nécessaires, tu y trouveras une exploration approfondie et passionnante de sujets spécifiques.
           </p>
           <p class="text-warm-700 mb-3">
-            <strong>Prérequis recommandés :</strong>
+            <strong>Prérequis obligatoires :</strong>
           </p>
           <ul class="list-disc list-inside text-warm-700 mb-3 space-y-1 ml-4">
-            <li>Connaissance des notes et de leur organisation</li>
-            <li>Compréhension des intervalles</li>
-            <li>Maîtrise des accords majeurs et mineurs de base</li>
-            <li>Pratique régulière de la musique (instrument ou théorie)</li>
+            <li>Compréhension des fonctions harmoniques (tonique, sous-dominante, dominante)</li>
+            <li>Connaissance des cadences principales et de leurs usages</li>
+            <li>Savoir ce que sont les accords enrichis (7e, 9e, 11e, 13e) - sans forcément connaître toutes les possibilités</li>
+            <li>Capacité à analyser des progressions harmoniques simples</li>
+            <li>Pratique régulière et approfondie de la théorie musicale</li>
           </ul>
-          <p class="text-warm-700 text-sm italic">
-            Si tu n'es pas sûr·e d'avoir le niveau requis, je te recommande de commencer par le module 
-            Théorie Débutant pour poser de bonnes bases avant de venir ici.
+          <p class="text-warm-700 text-sm italic mb-3">
+            Si tu n'es pas sûr·e d'avoir le niveau requis, je te recommande fortement de suivre le module 
+            <a href="/modules/theorie-intermediaire" class="text-terracotta-600 underline hover:text-terracotta-700 font-medium">Théorie Intermédiaire</a> avant de venir ici. 
+            Ce module avancé suppose que ces concepts sont déjà acquis et maîtrisés.
+          </p>
+          <p class="text-warm-700 text-sm">
+            Si tu as besoin de plus d'informations pour te situer, 
+            <a href="/contact" class="text-terracotta-600 underline hover:text-terracotta-700 font-medium">n'hésite pas à me contacter</a>. 
+            J'ai des outils à disposition pour t'aider à te situer et on peut le faire ensemble.
           </p>
         </div>
       )}
@@ -156,14 +173,22 @@ if (!module) {
           Rythme des séances
         </h3>
         <p class="text-warm-700">
-          <strong>{module.schedule.day}</strong> de la <strong>{module.schedule.week}</strong> de chaque mois.
+          <strong>{module.schedule.day}</strong> de la <strong>
+            {module.schedule.week === 'Semaine Théorie' ? (
+              <a href="/modules#organisation-semaines" class="text-warm-800 hover:text-terracotta-600 underline">Semaine Théorie</a>
+            ) : module.schedule.week === 'Semaine Pratique' ? (
+              <a href="/modules#organisation-semaines" class="text-warm-800 hover:text-terracotta-600 underline">Semaine Pratique</a>
+            ) : (
+              module.schedule.week
+            )}
+          </strong> de chaque mois.
           Chaque séance dure <strong>2h30</strong>.
         </p>
       </div>
 
       <div>
         <h3 class="text-xl font-semibold text-warm-800 mb-4">
-          Dates du cycle (janvier à juin 2026)
+          Dates du cycle (janvier à mai 2026)
         </h3>
         <div class="bg-white rounded-lg shadow-md p-6 border border-warm-200">
           <ul class="space-y-2">
@@ -193,14 +218,14 @@ if (!module) {
     <div class="max-w-3xl mx-auto">
       <p class="text-lg text-warm-700 mb-4">
         Les tarifs sont dégressifs selon le nombre de modules choisis. 
-        <strong>Engagement sur 6 mois</strong> pour garantir la cohésion du groupe 
+        <strong>Engagement sur 5 mois</strong> pour garantir la cohésion du groupe 
         et une progression régulière.
       </p>
       <div class="bg-warm-100 rounded-lg p-6 mb-6">
         <p class="text-warm-800 mb-2">
           <strong>Exemple :</strong> Si tu choisis uniquement ce module, 
-          c'est <strong class="text-terracotta-700 text-xl">{Math.round(pricingTiers[0].cyclePrice / 6)} €/mois</strong> 
-          (soit {pricingTiers[0].cyclePrice} € pour les 6 mois).
+          c'est <strong class="text-terracotta-700 text-xl">{Math.round(pricingTiers[0].cyclePrice / 5)} €/mois</strong> 
+          (soit {pricingTiers[0].cyclePrice} € pour les 5 mois).
         </p>
         <p class="text-warm-700 text-sm mb-3">
           Si tu combines plusieurs modules, les tarifs sont dégressifs. 

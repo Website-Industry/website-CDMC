@@ -7,17 +7,67 @@ import { modules } from '../../data/modules';
 
 <BaseLayout
   title="Les modules | CDMC"
-  description="Découvre tous les modules CDMC : Théorie Débutant, Théorie Intermédiaire, MAO, Piano, Rythmique. Cours de musique à Toulouse pour débutant·es et intermédiaires."
+  description="Découvre tous les modules CDMC : Théorie Débutant, Théorie Intermédiaire, Théorie Avancée, MAO, Piano, Rythmique. Cours de musique à Toulouse pour débutant·es et intermédiaires."
 >
   <Section id="modules-list" title="Les modules CDMC">
     <p class="text-lg text-warm-700 mb-8 max-w-3xl mx-auto text-center">
-      Cinq modules pour explorer la musique sous différents angles. 
+      Six modules pour explorer la musique sous différents angles. 
       Choisis celui ou ceux qui te correspondent, ou combine-les pour une approche complète.
     </p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {modules.map((module) => (
         <ModuleCard module={module} />
       ))}
+    </div>
+  </Section>
+
+  <!-- Organisation des semaines -->
+  <Section id="organisation-semaines" title="Organisation des semaines" className="bg-warm-50">
+    <div class="max-w-3xl mx-auto space-y-6">
+      <p class="text-lg text-warm-700 mb-4">
+        Les cours ont lieu dans <strong>les deux dernières semaines de chaque mois</strong>, 
+        organisées en deux types de semaines distinctes :
+      </p>
+      
+      <div class="bg-white rounded-lg shadow-md p-6 border border-warm-200 space-y-4">
+        <div>
+          <h3 class="text-xl font-semibold text-warm-800 mb-3">
+            Semaine Théorie (avant-dernière semaine du mois)
+          </h3>
+          <p class="text-warm-700 mb-3">
+            Cette semaine est dédiée aux modules théoriques. Trois modules sont proposés :
+          </p>
+          <ul class="space-y-2 text-warm-700 ml-4">
+            <li>• <strong>Mardi</strong> : Théorie Débutant</li>
+            <li>• <strong>Mercredi</strong> : Théorie Intermédiaire</li>
+            <li>• <strong>Jeudi</strong> : Théorie Avancée</li>
+          </ul>
+        </div>
+
+        <div class="border-t border-warm-200 pt-4">
+          <h3 class="text-xl font-semibold text-warm-800 mb-3">
+            Semaine Pratique (dernière semaine du mois)
+          </h3>
+          <p class="text-warm-700 mb-3">
+            Cette semaine est dédiée aux modules pratiques. Trois modules sont proposés :
+          </p>
+          <ul class="space-y-2 text-warm-700 ml-4">
+            <li>• <strong>Mardi</strong> : Piano</li>
+            <li>• <strong>Mercredi</strong> : MAO</li>
+            <li>• <strong>Jeudi</strong> : Rythmique</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-warm-100 rounded-lg p-6 border-l-4 border-terracotta-500">
+        <p class="text-warm-800 font-medium mb-2">
+          💡 Pourquoi cette organisation ?
+        </p>
+        <p class="text-warm-700 text-sm">
+          Cette découpe permet de séparer clairement la théorie et la pratique, 
+          tout en offrant une flexibilité pour combiner plusieurs modules selon tes envies et tes besoins.
+        </p>
+      </div>
     </div>
   </Section>
 </BaseLayout>
