@@ -18,6 +18,8 @@ const allDates: Array<{
   course: string;
   day: string;
   slug: string;
+  comingSoon: boolean;
+  almostFull: boolean;
 }> = [];
 
 modules.forEach((module) => {
@@ -36,6 +38,8 @@ modules.forEach((module) => {
       course: courseLabel,
       day: module.schedule.day,
       slug: module.slug,
+      comingSoon: module.comingSoon || false,
+      almostFull: module.almostFull || false,
     });
   });
 });
@@ -210,7 +214,7 @@ allDates.sort((a, b) => {
             </thead>
             <tbody>
               {allDates.map((item, index) => (
-                <tr class={index % 2 === 0 ? 'bg-white' : 'bg-warm-50'}>
+                <tr class={`${index % 2 === 0 ? 'bg-white' : 'bg-warm-50'} ${item.comingSoon ? 'opacity-60' : ''}`}>
                   <td class="border border-warm-300 px-4 py-3 text-warm-700">
                     <span class="font-medium">{item.week}</span>
                   </td>
@@ -218,9 +222,25 @@ allDates.sort((a, b) => {
                     {item.day}
                   </td>
                   <td class="border border-warm-300 px-4 py-3 text-warm-700">
-                    <a href={`/modules/${item.slug}`} class="text-terracotta-600 hover:text-terracotta-700 underline font-medium">
-                      {item.course}
-                    </a>
+                    <div class="flex items-center gap-2">
+                      <a href={`/modules/${item.slug}`} class={`underline font-medium ${
+                        item.comingSoon 
+                          ? 'text-warm-400 hover:text-warm-500' 
+                          : 'text-terracotta-600 hover:text-terracotta-700'
+                      }`}>
+                        {item.course}
+                      </a>
+                      {item.comingSoon && (
+                        <span class="px-2 py-0.5 text-xs font-medium bg-warm-200 text-warm-600 rounded">
+                          Prochainement
+                        </span>
+                      )}
+                      {item.almostFull && (
+                        <span class="px-2 py-0.5 text-xs font-medium bg-terracotta-100 text-terracotta-700 rounded">
+                          Bientôt complet
+                        </span>
+                      )}
+                    </div>
                   </td>
                   <td class="border border-warm-300 px-4 py-3 text-warm-700 font-medium">
                     {item.date} 2026

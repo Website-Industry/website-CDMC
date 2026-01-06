@@ -17,6 +17,8 @@ export interface Module {
     min: number;
     max: number;
   };
+  comingSoon?: boolean; // Si true, le module est en pause et affiché avec un style atténué
+  almostFull?: boolean; // Si true, le module est bientôt complet
 }
 
 export function formatCapacity(capacity: { min: number; max: number }): string {
@@ -32,6 +34,7 @@ export const modules: Module[] = [
     slug: 'theorie-debutant',
     title: 'Théorie Débutant',
     niveau: 1,
+    almostFull: true,
     shortDescription: 'Découvre les bases de la musique de manière décomplexée et pratique.',
     fullDescription: 'Un module pour découvrir les fondamentaux de la musique sans pression. On explore les notes, les intervalles, les accords de base, le tout en jouant, en écoutant et en discutant. Pas de récitation par cœur, juste de la compréhension et du plaisir.',
     targetAudience: 'Débutant·es absolu·es ou personnes qui veulent reprendre les bases. Aucun prérequis nécessaire.',
@@ -106,6 +109,7 @@ export const modules: Module[] = [
     slug: 'theorie-avancee',
     title: 'Théorie Avancée',
     niveau: 3,
+    comingSoon: true,
     shortDescription: 'Creuse un sujet spécifique à chaque cours et explore-le dans tous les sens pour une compréhension approfondie.',
     fullDescription: 'Un module pour celles et ceux qui maîtrisent déjà les concepts intermédiaires et veulent aller plus loin. À chaque séance, on prend un sujet précis et on le détricote dans tous les sens. Une approche de spécialité : un sujet, une séance, une exploration en profondeur.',
     targetAudience: 'Personnes qui ont maîtrisé les concepts du module Intermédiaire (fonctions harmoniques, cadences, accords enrichis de base) et souhaitent approfondir des sujets spécifiques de manière détaillée. Ce module suppose que ces bases sont acquises et maîtrisées.',
@@ -217,6 +221,7 @@ export const modules: Module[] = [
     slug: 'rythmique',
     title: 'Rythmique',
     niveau: 1,
+    comingSoon: true,
     shortDescription: 'Développe ton sens du rythme de manière ludique et efficace.',
     fullDescription: 'Un module pour travailler le rythme, la pulsation, les patterns. On utilise le corps, la voix, des instruments de percussion, des outils visuels. L\'objectif : développer ton feeling rythmique de manière naturelle et agréable.',
     targetAudience: 'Tous niveaux. Que tu aies des difficultés avec le rythme ou que tu veuilles approfondir, ce module est fait pour toi.',

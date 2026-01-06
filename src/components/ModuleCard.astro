@@ -7,25 +7,51 @@ interface Props {
     title: string;
     shortDescription: string;
     niveau: 1 | 2 | 3;
+    comingSoon?: boolean;
+    almostFull?: boolean;
   };
 }
 
 const { module } = Astro.props;
+const isComingSoon = module.comingSoon || false;
+const isAlmostFull = module.almostFull || false;
 ---
 
-<article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 border border-warm-200">
+<article class={`rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 border ${
+  isComingSoon 
+    ? 'bg-warm-50 border-warm-200 opacity-60' 
+    : 'bg-white border-warm-200'
+}`}>
   <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
-    <h3 class="text-xl font-semibold text-warm-800 flex-1 min-w-0">
+    <h3 class={`text-xl font-semibold flex-1 min-w-0 ${
+      isComingSoon ? 'text-warm-500' : 'text-warm-800'
+    }`}>
       {module.title}
     </h3>
-    <LevelTag level={module.niveau} />
+    <div class="flex items-center gap-2">
+      {isComingSoon && (
+        <span class="px-2 py-1 text-xs font-medium bg-warm-200 text-warm-600 rounded">
+          Prochainement
+        </span>
+      )}
+      {isAlmostFull && (
+        <span class="px-2 py-1 text-xs font-medium bg-terracotta-100 text-terracotta-700 rounded">
+          Bientôt complet
+        </span>
+      )}
+      <LevelTag level={module.niveau} />
+    </div>
   </div>
-  <p class="text-warm-700 mb-4">
+  <p class={`mb-4 ${isComingSoon ? 'text-warm-500' : 'text-warm-700'}`}>
     {module.shortDescription}
   </p>
   <a
     href={`/modules/${module.slug}`}
-    class="inline-block text-terracotta-600 hover:text-terracotta-700 font-medium underline decoration-2 underline-offset-4 focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:ring-offset-2 rounded transition-colors"
+    class={`inline-block font-medium underline decoration-2 underline-offset-4 focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:ring-offset-2 rounded transition-colors ${
+      isComingSoon 
+        ? 'text-warm-400 hover:text-warm-500' 
+        : 'text-terracotta-600 hover:text-terracotta-700'
+    }`}
   >
     En savoir plus
   </a>

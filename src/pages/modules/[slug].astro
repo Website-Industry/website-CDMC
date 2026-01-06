@@ -25,15 +25,41 @@ if (!module) {
   description={module.shortDescription}
 >
   <!-- Hero du module -->
-  <Section id="module-hero" className="bg-gradient-to-b from-warm-100 to-warm-50">
+  <Section id="module-hero" className={`bg-gradient-to-b from-warm-100 to-warm-50 ${module.comingSoon ? 'opacity-75' : ''}`}>
     <div class="max-w-3xl mx-auto text-center">
       <div class="flex items-center justify-center gap-4 mb-4 flex-wrap">
-        <h1 class="text-4xl md:text-5xl font-bold text-warm-800">
+        <h1 class={`text-4xl md:text-5xl font-bold ${module.comingSoon ? 'text-warm-500' : 'text-warm-800'}`}>
           {module.title}
         </h1>
-        <LevelTag level={module.niveau} />
+        <div class="flex items-center gap-2">
+          {module.comingSoon && (
+            <span class="px-3 py-1 text-sm font-medium bg-warm-200 text-warm-600 rounded">
+              Prochainement
+            </span>
+          )}
+          {module.almostFull && (
+            <span class="px-3 py-1 text-sm font-medium bg-terracotta-100 text-terracotta-700 rounded">
+              Bientôt complet
+            </span>
+          )}
+          <LevelTag level={module.niveau} />
+        </div>
       </div>
-      <p class="text-xl text-warm-700 mb-6">
+      {module.comingSoon && (
+        <div class="bg-warm-100 rounded-lg p-4 mb-4 border-l-4 border-warm-300">
+          <p class="text-warm-700 font-medium">
+            Ce module est actuellement en pause et sera disponible prochainement.
+          </p>
+        </div>
+      )}
+      {module.almostFull && (
+        <div class="bg-terracotta-50 rounded-lg p-4 mb-4 border-l-4 border-terracotta-400">
+          <p class="text-terracotta-800 font-medium">
+            ⚠️ Ce module est bientôt complet. Inscris-toi rapidement pour garantir ta place !
+          </p>
+        </div>
+      )}
+      <p class={`text-xl mb-6 ${module.comingSoon ? 'text-warm-500' : 'text-warm-700'}`}>
         {module.fullDescription}
       </p>
     </div>
@@ -242,16 +268,45 @@ if (!module) {
   <!-- CTA inscription -->
   <Section id="cta" className="bg-gradient-to-b from-terracotta-50 to-warm-100">
     <div class="text-center max-w-2xl mx-auto">
-      <h2 class="text-3xl font-bold text-warm-800 mb-4">
-        Intéressé·e par ce module ?
-      </h2>
-      <p class="text-lg text-warm-700 mb-8">
-        Inscris-toi ou pose-moi tes questions via le formulaire de contact.
-      </p>
-      <CTA 
-        href={`/contact?module=${module.id}#inscription-form`} 
-        text={`Je m'inscris à ${module.title}`} 
-      />
+      {module.comingSoon ? (
+        <>
+          <h2 class="text-3xl font-bold text-warm-800 mb-4">
+            Ce module t'intéresse ?
+          </h2>
+          <div class="bg-white rounded-lg p-6 mb-6 border border-warm-200 text-left">
+            <p class="text-lg text-warm-700 mb-4">
+              Ce module est actuellement en pause, mais tu peux <strong>t'y pré-inscrire</strong> dès maintenant 
+              pour être informé·e dès qu'il sera disponible.
+            </p>
+            <p class="text-warm-700 mb-4">
+              Dans le formulaire de pré-inscription, tu pourras <strong>mettre un message dans la section "Commentaire"</strong> 
+              pour me situer sur ton projet, tes envies, tes questions ou tes attentes concernant ce module. 
+              Cela m'aidera à mieux comprendre tes besoins et à te recontacter au bon moment.
+            </p>
+            <p class="text-warm-600 text-sm italic">
+              💡 Même si le module n'est pas encore actif, ta pré-inscription me permet de voir l'intérêt 
+              et de te tenir informé·e de son ouverture prochaine.
+            </p>
+          </div>
+          <CTA 
+            href={`/contact?module=${module.id}#inscription-form`} 
+            text={`Je me pré-inscris à ${module.title}`} 
+          />
+        </>
+      ) : (
+        <>
+          <h2 class="text-3xl font-bold text-warm-800 mb-4">
+            Intéressé·e par ce module ?
+          </h2>
+          <p class="text-lg text-warm-700 mb-8">
+            Inscris-toi ou pose-moi tes questions via le formulaire de contact.
+          </p>
+          <CTA 
+            href={`/contact?module=${module.id}#inscription-form`} 
+            text={`Je m'inscris à ${module.title}`} 
+          />
+        </>
+      )}
     </div>
   </Section>
 </BaseLayout>

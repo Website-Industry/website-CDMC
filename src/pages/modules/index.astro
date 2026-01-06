@@ -15,9 +15,11 @@ import { modules } from '../../data/modules';
       Choisis celui ou ceux qui te correspondent, ou combine-les pour une approche complète.
     </p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {modules.map((module) => (
-        <ModuleCard module={module} />
-      ))}
+      {modules
+        .sort((a, b) => (a.comingSoon ? 1 : 0) - (b.comingSoon ? 1 : 0))
+        .map((module) => (
+          <ModuleCard module={module} />
+        ))}
     </div>
   </Section>
 
