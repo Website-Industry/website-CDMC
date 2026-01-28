@@ -18,6 +18,149 @@ const module = getModuleBySlug(slug!);
 if (!module) {
   return Astro.redirect('/modules');
 }
+
+// Fonction pour déterminer si une date est passée
+function isDatePast(dateStr: string): boolean {
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  
+  const monthNames: Record<string, number> = {
+    'janvier': 0,
+    'février': 1,
+    'mars': 2,
+    'avril': 3,
+    'mai': 4,
+    'juin': 5,
+    'juillet': 6,
+    'août': 7,
+    'septembre': 8,
+    'octobre': 9,
+    'novembre': 10,
+    'décembre': 11,
+  };
+  
+  const match = dateStr.match(/^(\d+)\s+(.+)$/);
+  if (!match) return false;
+  
+  const day = parseInt(match[1]);
+  const monthName = match[2].toLowerCase();
+  const month = monthNames[monthName];
+  
+  if (month === undefined) return false;
+  
+  // On assume que les dates sont en 2026 (année du cycle)
+  const date = new Date(2026, month, day);
+  return date < now;
+}
+
+// Contenu des séances pour Théorie Débutant
+const sessionContent = module.slug === 'theorie-debutant' ? [
+  {
+    number: 1,
+    title: 'Bases gammes & accords + mineure naturelle',
+    objective: 'consolider le socle commun.',
+    content: {
+      rappels: [
+        "Qu'est-ce qu'une gamme",
+        'Intervalles de la gamme majeure',
+        'Gammes majeures dans tous les tons',
+        'Harmonisation de la gamme majeure',
+        'Accords de triades : M / m / dim',
+        'Fonctions des degrés I, IV, V, VII',
+        'Accords majeurs, mineurs, diminués',
+      ],
+      decouverte: {
+        title: 'Découverte de la gamme mineure naturelle :',
+        items: [
+          'Intervalles',
+          'Harmonisation',
+          'Mise en pratique (clavier / MAO)',
+        ],
+      },
+    },
+  },
+  {
+    number: 2,
+    title: 'Les gammes mineures',
+    objective: 'comprendre les variantes de la mineure et leur rôle harmonique.',
+    content: {
+      rappel: ['Gamme mineure naturelle'],
+      harmonique: {
+        title: 'Gamme mineure harmonique :',
+        items: ['Sensible, tension'],
+      },
+      melodique: {
+        title: 'Gamme mineure mélodique :',
+        items: ['Logique fonctionnelle'],
+      },
+      comparaison: {
+        title: 'Comparaison des 3 gammes mineures',
+        items: [
+          'Harmonisation (triades)',
+          'Écoute et applications musicales',
+        ],
+      },
+    },
+  },
+  {
+    number: 3,
+    title: 'Accords de 7e & fonctions harmoniques',
+    objective: 'enrichir l\'harmonie et structurer les progressions.',
+    content: {
+      construction: {
+        title: 'Construction des accords de 7e :',
+        items: ['Maj7, 7, m7, m7♭5, dim7 (approche simple)'],
+      },
+      harmonisation: 'Harmonisation de la gamme majeure en accords de 7e',
+      fonctions: {
+        title: 'Fonctions harmoniques :',
+        items: [
+          'Tonique / Sous-dominante / Dominante',
+          'Introduction du II – V – I',
+          'En majeur',
+          'Mise en pratique et écoute',
+        ],
+      },
+    },
+  },
+  {
+    number: 4,
+    title: 'Accords suspendus & enrichis',
+    objective: 'comprendre la couleur et la tension non fonctionnelle.',
+    content: {
+      suspendus: {
+        title: 'Accords sus2 / sus4 :',
+        items: ['Notion de suspension / résolution'],
+      },
+      enrichis: {
+        title: 'Accords enrichis :',
+        items: [
+          'add9, 9, 11, 13 (logique générale)',
+          'Couleur vs fonction',
+          'Analyse de progressions courantes',
+        ],
+      },
+    },
+  },
+  {
+    number: 5,
+    title: 'Gammes pentatoniques, blues & synthèse',
+    objective: 'relier théorie, jeu et improvisation.',
+    content: {
+      pentatoniques: {
+        title: 'Gammes pentatoniques :',
+        items: ['Majeure / mineure'],
+      },
+      blues: {
+        title: 'Gamme blues :',
+        items: ['Blue note'],
+      },
+      lien: 'Lien gammes ↔ accords',
+      impro: 'Impro guidée',
+      synthese: 'Synthèse globale du cycle',
+    },
+  },
+] : null;
 ---
 
 <BaseLayout
@@ -181,6 +324,217 @@ if (!module) {
     </div>
   </Section>
 
+  <!-- Contenu détaillé des séances (Théorie Débutant uniquement) -->
+  {module.slug === 'theorie-debutant' && sessionContent && (
+    <Section id="detailed-content" title="Contenu détaillé des séances">
+      <div class="max-w-4xl mx-auto space-y-8">
+        {sessionContent.map((session, index) => {
+          const sessionDate = module.dates[index];
+          const isPast = sessionDate ? isDatePast(sessionDate) : false;
+          
+          return (
+            <div class={`rounded-lg shadow-md p-6 border ${
+              isPast 
+                ? 'bg-warm-50 border-warm-200 opacity-60' 
+                : 'bg-white border-warm-200'
+            }`}>
+              <div class="flex items-center justify-between mb-3">
+                <h3 class={`text-2xl font-semibold mb-0 ${
+                  isPast ? 'text-warm-500' : 'text-warm-800'
+                }`}>
+                  Séance {session.number} — {session.title}
+                </h3>
+                {isPast && (
+                  <span class="px-3 py-1 text-sm font-medium bg-warm-200 text-warm-600 rounded">
+                    Passée
+                  </span>
+                )}
+              </div>
+              {sessionDate && (
+                <p class={`text-sm mb-4 ${isPast ? 'text-warm-400' : 'text-warm-600'}`}>
+                  📅 {sessionDate} 2026
+                </p>
+              )}
+              <p class={`font-medium mb-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                Objectif : {session.objective}
+              </p>
+              <div class="space-y-4">
+                {session.content.rappels && (
+                  <div>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>Rappels :</h4>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                      {session.content.rappels.map((item) => (
+                        <li>• {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {session.content.rappel && (
+                  <div>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>Rappel :</h4>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                      {session.content.rappel.map((item) => (
+                        <li>• {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {session.content.decouverte && (
+                  <div>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                      {session.content.decouverte.title}
+                    </h4>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                      {session.content.decouverte.items.map((item) => (
+                        <li>• {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {session.content.harmonique && (
+                  <div>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                      {session.content.harmonique.title}
+                    </h4>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                      {session.content.harmonique.items.map((item) => (
+                        <li>• {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {session.content.melodique && (
+                  <div>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                      {session.content.melodique.title}
+                    </h4>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                      {session.content.melodique.items.map((item) => (
+                        <li>• {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {session.content.comparaison && (
+                  <div>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                      {session.content.comparaison.title}
+                    </h4>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                      {session.content.comparaison.items.map((item) => (
+                        <li>• {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {session.content.construction && (
+                  <div>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                      {session.content.construction.title}
+                    </h4>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                      {session.content.construction.items.map((item) => (
+                        <li>• {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {session.content.harmonisation && (
+                  <div>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                      {session.content.harmonisation}
+                    </h4>
+                  </div>
+                )}
+                {session.content.fonctions && (
+                  <div>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                      {session.content.fonctions.title}
+                    </h4>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                      {session.content.fonctions.items.map((item) => (
+                        <li>• {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {session.content.suspendus && (
+                  <div>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                      {session.content.suspendus.title}
+                    </h4>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                      {session.content.suspendus.items.map((item) => (
+                        <li>• {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {session.content.enrichis && (
+                  <div>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                      {session.content.enrichis.title}
+                    </h4>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                      {session.content.enrichis.items.map((item) => (
+                        <li>• {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {session.content.pentatoniques && (
+                  <div>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                      {session.content.pentatoniques.title}
+                    </h4>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                      {session.content.pentatoniques.items.map((item) => (
+                        <li>• {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {session.content.blues && (
+                  <div>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                      {session.content.blues.title}
+                    </h4>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                      {session.content.blues.items.map((item) => (
+                        <li>• {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {session.content.lien && (
+                  <div>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                      {session.content.lien}
+                    </h4>
+                  </div>
+                )}
+                {session.content.impro && (
+                  <div>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                      {session.content.impro}
+                    </h4>
+                  </div>
+                )}
+                {session.content.synthese && (
+                  <div>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                      {session.content.synthese}
+                    </h4>
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </Section>
+  )}
+
   <!-- Points forts -->
   <Section id="highlights" title="Points forts pédagogiques">
     <div class="max-w-3xl mx-auto">
@@ -222,12 +576,22 @@ if (!module) {
         </h3>
         <div class="bg-white rounded-lg shadow-md p-6 border border-warm-200">
           <ul class="space-y-2">
-            {module.dates.map((date) => (
-              <li class="flex items-center text-warm-700">
-                <span class="text-terracotta-600 mr-3">📅</span>
-                <span class="text-lg">{date}</span>
-              </li>
-            ))}
+            {module.dates.map((date) => {
+              const isPast = isDatePast(date);
+              return (
+                <li class={`flex items-center ${isPast ? 'opacity-60' : ''}`}>
+                  <span class={`mr-3 ${isPast ? 'text-warm-400' : 'text-terracotta-600'}`}>📅</span>
+                  <span class={`text-lg ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                    {date} 2026
+                    {isPast && (
+                      <span class="ml-2 px-2 py-0.5 text-xs font-medium bg-warm-200 text-warm-600 rounded">
+                        Passée
+                      </span>
+                    )}
+                  </span>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
