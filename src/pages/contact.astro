@@ -9,7 +9,7 @@ const moduleParam = url.searchParams.get('module');
 
 <BaseLayout
   title="Contact & Inscription | CDMC"
-  description="Contacte CDMC pour en savoir plus ou t'inscrire aux cours de musique à Toulouse. Formulaire de contact et pré-inscription."
+  description="Contacte CDMC pour en savoir plus ou demander des informations sur les cours de musique à Toulouse. Formulaire de contact et demande d'informations."
 >
   <Section id="contact-hero" className="bg-gradient-to-b from-warm-100 to-warm-50">
     <div class="max-w-3xl mx-auto text-center">
@@ -23,11 +23,11 @@ const moduleParam = url.searchParams.get('module');
     </div>
   </Section>
 
-  <Section id="inscription-form" title="Pré-inscription">
+  <Section id="inscription-form" title="Demande d'informations">
     <div class="max-w-2xl mx-auto">
       <p class="text-warm-700 mb-6">
-        Tu veux t'inscrire à un ou plusieurs modules ? Remplis ce formulaire de pré-inscription. 
-        Je te recontacterai rapidement pour finaliser ton inscription.
+        Tu veux en savoir plus sur un ou plusieurs modules ? Remplis ce formulaire de demande d'informations. 
+        Je te recontacterai rapidement pour répondre à tes questions et discuter de ton projet.
       </p>
       {moduleParam && (
         <div class="bg-terracotta-50 border border-terracotta-200 rounded-lg p-4 mb-6">
@@ -95,7 +95,7 @@ const moduleParam = url.searchParams.get('module');
         </p>
         <p>
           <strong>Places limitées :</strong> Chaque module accueille entre 4 et 9 participant·es maximum. 
-          N'hésite pas à te pré-inscrire si tu es intéressé·e, nous pourrons discuter sans engagement.
+          N'hésite pas à demander des informations si tu es intéressé·e, nous pourrons discuter sans engagement.
         </p>
       </div>
     </div>

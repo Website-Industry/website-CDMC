@@ -643,22 +643,22 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
           </h2>
           <div class="bg-white rounded-lg p-6 mb-6 border border-warm-200 text-left">
             <p class="text-lg text-warm-700 mb-4">
-              Ce module est actuellement en pause, mais tu peux <strong>t'y pré-inscrire</strong> dès maintenant 
+              Ce module est actuellement en pause, mais tu peux <strong>demander des informations</strong> dès maintenant 
               pour être informé·e dès qu'il sera disponible.
             </p>
             <p class="text-warm-700 mb-4">
-              Dans le formulaire de pré-inscription, tu pourras <strong>mettre un message dans la section "Commentaire"</strong> 
+              Dans le formulaire de demande d'informations, tu pourras <strong>mettre un message dans la section "Commentaire"</strong> 
               pour me situer sur ton projet, tes envies, tes questions ou tes attentes concernant ce module. 
               Cela m'aidera à mieux comprendre tes besoins et à te recontacter au bon moment.
             </p>
             <p class="text-warm-600 text-sm italic">
-              💡 Même si le module n'est pas encore actif, ta pré-inscription me permet de voir l'intérêt 
+              💡 Même si le module n'est pas encore actif, ta demande d'informations me permet de voir l'intérêt 
               et de te tenir informé·e de son ouverture prochaine.
             </p>
           </div>
           <CTA 
             href={`/contact?module=${module.id}#inscription-form`} 
-            text={`Je me pré-inscris à ${module.title}`} 
+            text={`Demander des informations sur ${module.title}`} 
           />
         </>
       ) : (
@@ -671,7 +671,7 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
           </p>
           <CTA 
             href={`/contact?module=${module.id}#inscription-form`} 
-            text={`Je m'inscris à ${module.title}`} 
+            text={`Demander des informations sur ${module.title}`} 
           />
         </>
       )}

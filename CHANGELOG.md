@@ -5,7 +5,36 @@ Tous les changements notables de ce projet seront documentés dans ce fichier.
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.4.0] - 2026-01-XX
+
+### Added
+- Section témoignages sur la page d'accueil avec 3 témoignages du groupe CDMC 2025 - Théorie Débutant
+- Badges/tags visuels pour identifier le groupe et le module dans les témoignages
+- Design de badges arrondis avec bordures et ombres pour un rendu plus physique
+
+### Changed
+- Inversion de l'ordre des sections : "Esprit & pédagogie" avant "Tarifs & engagement"
+- Refonte du concept de "pré-inscription" vers "demande d'informations" sur toutes les pages
+- Remplacement de tous les libellés "Je me pré-inscris" par "Demander des informations"
+- Adaptation des messages et formulaires pour un ton moins engageant, plus informatif
+- Correction de l'attribution des témoignages (Raf et Flo)
+
+### Fixed
+- Correction de l'assignation des noms aux bons témoignages
+
+## [0.3.0] - 2026-01-XX
+
+### Added
+- Contenu détaillé des séances pour le module Théorie Débutant avec 5 séances complètes
+- Section détaillée affichant le programme de chaque séance avec objectifs et contenu
+- Indicateurs visuels pour les séances passées (opacité réduite, badge "Passée")
+- Indicateurs visuels pour les dates passées dans la section "Planning et dates 2026"
+- Logique de détection automatique des dates passées basée sur la date actuelle
+- Affichage de la date pour chaque séance dans le contenu détaillé
+
+### Changed
+- Amélioration de l'affichage des séances avec distinction visuelle entre passées et à venir
+- Conservation de l'ordre chronologique tout en atténuant visuellement les éléments passés
 
 ## [0.2.0] - 2025-12-XX
 

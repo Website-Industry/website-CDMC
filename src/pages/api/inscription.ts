@@ -104,7 +104,7 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response(
       JSON.stringify({
         success: true,
-        message: 'Ta pré-inscription a été enregistrée avec succès ! Je te contacterai bientôt pour finaliser ton inscription.',
+        message: 'Ta demande d\'informations a été enregistrée avec succès ! Je te contacterai bientôt pour répondre à tes questions.',
       }),
       {
         status: 200,
@@ -116,7 +116,7 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response(
       JSON.stringify({
         success: false,
-        error: error.message || 'Une erreur est survenue lors de l\'envoi de ta pré-inscription.',
+        error: error.message || 'Une erreur est survenue lors de l\'envoi de ta demande d\'informations.',
       }),
       {
         status: 500,
