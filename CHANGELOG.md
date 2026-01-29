@@ -5,6 +5,23 @@ Tous les changements notables de ce projet seront documentés dans ce fichier.
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2026-01-29
+
+### Added
+- Système de dark mode complet avec bascule manuelle
+- Composant DarkModeToggle avec icônes soleil/lune dans le header
+- Script de gestion du dark mode avec sauvegarde dans localStorage
+- Détection automatique de la préférence système pour le thème
+- Variables CSS dark mode pour toutes les palettes de couleurs (warm et terracotta)
+- Adaptation complète de tous les backgrounds, textes et bordures pour le dark mode sur toutes les pages
+- Transitions douces entre les thèmes clair et sombre
+
+### Changed
+- Configuration Tailwind avec stratégie `class` pour le dark mode
+- Adaptation de tous les composants (Header, Footer, Section, ModuleCard, CTA, LevelTag, ContactForm) pour le dark mode
+- Adaptation de toutes les pages (index, modules, contact, a-propos, pedagogie) pour le dark mode
+- Palette de couleurs inversée et adaptée pour le dark mode avec maintien de la lisibilité
+
 ## [0.4.0] - 2026-01-XX
 
 ### Added

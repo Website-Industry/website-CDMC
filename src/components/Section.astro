@@ -17,21 +17,21 @@ const { id, title, className = '' } = Astro.props;
     {title && id && (
       <h2
         id={`${id}-title`}
-        class="text-3xl md:text-4xl font-bold text-warm-800 mb-8 text-center max-w-3xl mx-auto"
+        class="text-3xl md:text-4xl font-bold text-warm-800 dark:text-warm-100 mb-8 text-center max-w-3xl mx-auto"
       >
         <a
           href={`#${id}`}
-          class="group inline-flex items-center gap-2 hover:text-terracotta-600 transition-colors focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:ring-offset-2 rounded"
+          class="group inline-flex items-center gap-2 hover:text-terracotta-600 dark:hover:text-terracotta-400 transition-colors focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:ring-offset-2 rounded"
           aria-label={`Lien vers la section ${title}`}
         >
-          <span class="text-terracotta-400 opacity-0 group-hover:opacity-100 transition-opacity text-2xl" aria-hidden="true">♯</span>
+          <span class="text-terracotta-400 dark:text-terracotta-500 opacity-0 group-hover:opacity-100 transition-opacity text-2xl" aria-hidden="true">♯</span>
           <span>{title}</span>
         </a>
       </h2>
     )}
     {title && !id && (
       <h2
-        class="text-3xl md:text-4xl font-bold text-warm-800 mb-8 text-center max-w-3xl mx-auto"
+        class="text-3xl md:text-4xl font-bold text-warm-800 dark:text-warm-100 mb-8 text-center max-w-3xl mx-auto"
       >
         {title}
       </h2>

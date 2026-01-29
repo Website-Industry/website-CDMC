@@ -19,38 +19,38 @@ const isAlmostFull = module.almostFull || false;
 
 <article class={`rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 border ${
   isComingSoon 
-    ? 'bg-warm-50 border-warm-200 opacity-60' 
-    : 'bg-white border-warm-200'
+    ? 'bg-warm-50 dark:bg-warm-800 border-warm-200 dark:border-warm-700 opacity-60' 
+    : 'bg-white dark:bg-warm-800 border-warm-200 dark:border-warm-700'
 }`}>
   <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
     <h3 class={`text-xl font-semibold flex-1 min-w-0 ${
-      isComingSoon ? 'text-warm-500' : 'text-warm-800'
+      isComingSoon ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'
     }`}>
       {module.title}
     </h3>
     <div class="flex items-center gap-2">
       {isComingSoon && (
-        <span class="px-2 py-1 text-xs font-medium bg-warm-200 text-warm-600 rounded">
+        <span class="px-2 py-1 text-xs font-medium bg-warm-200 dark:bg-warm-700 text-warm-600 dark:text-warm-300 rounded">
           Prochainement
         </span>
       )}
       {isAlmostFull && (
-        <span class="px-2 py-1 text-xs font-medium bg-terracotta-100 text-terracotta-700 rounded">
+        <span class="px-2 py-1 text-xs font-medium bg-terracotta-100 dark:bg-terracotta-900 text-terracotta-700 dark:text-terracotta-300 rounded">
           Bientôt complet
         </span>
       )}
       <LevelTag level={module.niveau} />
     </div>
   </div>
-  <p class={`mb-4 ${isComingSoon ? 'text-warm-500' : 'text-warm-700'}`}>
+  <p class={`mb-4 ${isComingSoon ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
     {module.shortDescription}
   </p>
   <a
     href={`/modules/${module.slug}`}
     class={`inline-block font-medium underline decoration-2 underline-offset-4 focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:ring-offset-2 rounded transition-colors ${
       isComingSoon 
-        ? 'text-warm-400 hover:text-warm-500' 
-        : 'text-terracotta-600 hover:text-terracotta-700'
+        ? 'text-warm-400 dark:text-warm-500 hover:text-warm-500 dark:hover:text-warm-400' 
+        : 'text-terracotta-600 dark:text-terracotta-400 hover:text-terracotta-700 dark:hover:text-terracotta-300'
     }`}
   >
     En savoir plus

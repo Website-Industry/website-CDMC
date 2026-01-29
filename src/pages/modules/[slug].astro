@@ -168,20 +168,20 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
   description={module.shortDescription}
 >
   <!-- Hero du module -->
-  <Section id="module-hero" className={`bg-gradient-to-b from-warm-100 to-warm-50 ${module.comingSoon ? 'opacity-75' : ''}`}>
+  <Section id="module-hero" className={`bg-gradient-to-b from-warm-100 dark:from-warm-800 to-warm-50 dark:to-warm-900 ${module.comingSoon ? 'opacity-75' : ''}`}>
     <div class="max-w-3xl mx-auto text-center">
       <div class="flex items-center justify-center gap-4 mb-4 flex-wrap">
-        <h1 class={`text-4xl md:text-5xl font-bold ${module.comingSoon ? 'text-warm-500' : 'text-warm-800'}`}>
+        <h1 class={`text-4xl md:text-5xl font-bold ${module.comingSoon ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'}`}>
           {module.title}
         </h1>
         <div class="flex items-center gap-2">
           {module.comingSoon && (
-            <span class="px-3 py-1 text-sm font-medium bg-warm-200 text-warm-600 rounded">
+            <span class="px-3 py-1 text-sm font-medium bg-warm-200 dark:bg-warm-700 text-warm-600 dark:text-warm-300 rounded">
               Prochainement
             </span>
           )}
           {module.almostFull && (
-            <span class="px-3 py-1 text-sm font-medium bg-terracotta-100 text-terracotta-700 rounded">
+            <span class="px-3 py-1 text-sm font-medium bg-terracotta-100 dark:bg-terracotta-900 text-terracotta-700 dark:text-terracotta-300 rounded">
               Bientôt complet
             </span>
           )}
@@ -189,111 +189,111 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
         </div>
       </div>
       {module.comingSoon && (
-        <div class="bg-warm-100 rounded-lg p-4 mb-4 border-l-4 border-warm-300">
-          <p class="text-warm-700 font-medium mb-2">
+        <div class="bg-warm-100 dark:bg-warm-800 rounded-lg p-4 mb-4 border-l-4 border-warm-300 dark:border-warm-600">
+          <p class="text-warm-700 dark:text-warm-200 font-medium mb-2">
             Ce module est actuellement en pause et sera disponible prochainement.
           </p>
-          <p class="text-warm-700 text-sm">
+          <p class="text-warm-700 dark:text-warm-200 text-sm">
             Tu peux <strong>t'y pré-inscrire</strong> dès maintenant. 
             Dans le formulaire, utilise la section "Commentaire" pour me situer sur ton projet et tes attentes.
           </p>
         </div>
       )}
       {module.almostFull && (
-        <div class="bg-terracotta-50 rounded-lg p-4 mb-4 border-l-4 border-terracotta-400">
-          <p class="text-terracotta-800 font-medium">
+        <div class="bg-terracotta-50 dark:bg-terracotta-900 rounded-lg p-4 mb-4 border-l-4 border-terracotta-400 dark:border-terracotta-500">
+          <p class="text-terracotta-800 dark:text-terracotta-200 font-medium">
             ⚠️ Ce module est bientôt complet. Inscris-toi rapidement pour garantir ta place !
           </p>
         </div>
       )}
-      <p class={`text-xl mb-6 ${module.comingSoon ? 'text-warm-500' : 'text-warm-700'}`}>
+      <p class={`text-xl mb-6 ${module.comingSoon ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
         {module.fullDescription}
       </p>
     </div>
   </Section>
 
   <!-- Prérequis -->
-  <Section id="prerequis" title="Prérequis et niveau requis">
+  <Section id="prerequis" title="Prérequis et niveau requis" className="bg-warm-50 dark:bg-warm-900">
     <div class="max-w-3xl mx-auto">
       {module.niveau === 1 && (
-        <div class="bg-warm-50 border-l-4 border-terracotta-400 rounded-lg p-6">
+        <div class="bg-warm-50 dark:bg-warm-800 border-l-4 border-terracotta-400 dark:border-terracotta-500 rounded-lg p-6">
           <div class="flex items-start gap-3 mb-3">
             <LevelTag level={1} />
-            <h3 class="text-xl font-semibold text-warm-800">
+            <h3 class="text-xl font-semibold text-warm-800 dark:text-warm-100">
               Aucun prérequis nécessaire
             </h3>
           </div>
-          <p class="text-warm-700 mb-3">
+          <p class="text-warm-700 dark:text-warm-200 mb-3">
             Ce module est accessible à toutes et tous, même si tu n'as jamais touché un instrument 
             ou étudié la musique. On part de zéro, dans une ambiance bienveillante où chaque question 
             est la bienvenue. L'important, c'est ta curiosité et ton envie d'apprendre, pas tes connaissances préalables.
           </p>
-          <p class="text-warm-700 text-sm italic">
+          <p class="text-warm-700 dark:text-warm-200 text-sm italic">
             Tu peux venir avec tes doutes, tes questions, et même l'impression de ne rien connaître. 
             C'est exactement pour ça qu'on est là.
           </p>
-          <p class="text-warm-700 text-sm mt-3">
+          <p class="text-warm-700 dark:text-warm-200 text-sm mt-3">
             Si tu as des questions ou besoin de plus d'informations pour te situer, 
-            <a href="/contact#contact-form" class="text-terracotta-600 underline hover:text-terracotta-700 font-medium">n'hésite pas à me contacter</a>. 
+            <a href="/contact#contact-form" class="text-terracotta-600 dark:text-terracotta-400 underline hover:text-terracotta-700 dark:hover:text-terracotta-300 font-medium">n'hésite pas à me contacter</a>. 
             J'ai des outils à disposition pour t'aider à te situer et on peut le faire ensemble.
           </p>
         </div>
       )}
       {module.niveau === 2 && (
-        <div class="bg-warm-50 border-l-4 border-terracotta-500 rounded-lg p-6">
+        <div class="bg-warm-50 dark:bg-warm-800 border-l-4 border-terracotta-500 dark:border-terracotta-400 rounded-lg p-6">
           <div class="flex items-start gap-3 mb-3">
             <LevelTag level={2} />
-            <h3 class="text-xl font-semibold text-warm-800">
+            <h3 class="text-xl font-semibold text-warm-800 dark:text-warm-100">
               Quelques bases recommandées
             </h3>
           </div>
-          <p class="text-warm-700 mb-3">
+          <p class="text-warm-700 dark:text-warm-200 mb-3">
             Ce module est accessible si tu as déjà quelques notions de base en musique. 
             Pas besoin d'être un·e expert·e, mais avoir déjà exploré un peu la musique (notes, accords de base, 
             pratique d'un instrument) te permettra de mieux profiter du contenu.
           </p>
-          <p class="text-warm-700 text-sm italic mb-3">
+          <p class="text-warm-700 dark:text-warm-200 text-sm italic mb-3">
             Si tu n'es pas sûr·e d'avoir le niveau requis, je te recommande de commencer par le module 
-            <a href="/modules/theorie-debutant" class="text-terracotta-600 underline hover:text-terracotta-700 font-medium">Théorie Débutant</a> pour poser de bonnes bases avant de venir ici.
+            <a href="/modules/theorie-debutant" class="text-terracotta-600 dark:text-terracotta-400 underline hover:text-terracotta-700 dark:hover:text-terracotta-300 font-medium">Théorie Débutant</a> pour poser de bonnes bases avant de venir ici.
           </p>
-          <p class="text-warm-700 text-sm">
+          <p class="text-warm-700 dark:text-warm-200 text-sm">
             Si tu as besoin de plus d'informations pour te situer, 
-            <a href="/contact#contact-form" class="text-terracotta-600 underline hover:text-terracotta-700 font-medium">n'hésite pas à me contacter</a>. 
+            <a href="/contact#contact-form" class="text-terracotta-600 dark:text-terracotta-400 underline hover:text-terracotta-700 dark:hover:text-terracotta-300 font-medium">n'hésite pas à me contacter</a>. 
             J'ai des outils à disposition pour t'aider à te situer et on peut le faire ensemble.
           </p>
         </div>
       )}
       {module.niveau === 3 && (
-        <div class="bg-warm-50 border-l-4 border-terracotta-600 rounded-lg p-6">
+        <div class="bg-warm-50 dark:bg-warm-800 border-l-4 border-terracotta-600 dark:border-terracotta-500 rounded-lg p-6">
           <div class="flex items-start gap-3 mb-3">
             <LevelTag level={3} />
-            <h3 class="text-xl font-semibold text-warm-800">
+            <h3 class="text-xl font-semibold text-warm-800 dark:text-warm-100">
               Prérequis nécessaires
             </h3>
           </div>
-          <p class="text-warm-700 mb-3">
+          <p class="text-warm-700 dark:text-warm-200 mb-3">
             Ce module nécessite d'avoir <strong>maîtrisé les concepts du module Intermédiaire</strong> ou d'avoir 
             des connaissances équivalentes. Ce n'est pas un module pour tout le monde, mais si tu as les bases 
             nécessaires, tu y trouveras une exploration approfondie et passionnante de sujets spécifiques.
           </p>
-          <p class="text-warm-700 mb-3">
+          <p class="text-warm-700 dark:text-warm-200 mb-3">
             <strong>Prérequis obligatoires :</strong>
           </p>
-          <ul class="list-disc list-inside text-warm-700 mb-3 space-y-1 ml-4">
+          <ul class="list-disc list-inside text-warm-700 dark:text-warm-200 mb-3 space-y-1 ml-4">
             <li>Compréhension des fonctions harmoniques (tonique, sous-dominante, dominante)</li>
             <li>Connaissance des cadences principales et de leurs usages</li>
             <li>Savoir ce que sont les accords enrichis (7e, 9e, 11e, 13e) - sans forcément connaître toutes les possibilités</li>
             <li>Capacité à analyser des progressions harmoniques simples</li>
             <li>Pratique régulière et approfondie de la théorie musicale</li>
           </ul>
-          <p class="text-warm-700 text-sm italic mb-3">
+          <p class="text-warm-700 dark:text-warm-200 text-sm italic mb-3">
             Si tu n'es pas sûr·e d'avoir le niveau requis, je te recommande fortement de suivre le module 
-            <a href="/modules/theorie-intermediaire" class="text-terracotta-600 underline hover:text-terracotta-700 font-medium">Théorie Intermédiaire</a> avant de venir ici. 
+            <a href="/modules/theorie-intermediaire" class="text-terracotta-600 dark:text-terracotta-400 underline hover:text-terracotta-700 dark:hover:text-terracotta-300 font-medium">Théorie Intermédiaire</a> avant de venir ici. 
             Ce module avancé suppose que ces concepts sont déjà acquis et maîtrisés.
           </p>
-          <p class="text-warm-700 text-sm">
+          <p class="text-warm-700 dark:text-warm-200 text-sm">
             Si tu as besoin de plus d'informations pour te situer, 
-            <a href="/contact#contact-form" class="text-terracotta-600 underline hover:text-terracotta-700 font-medium">n'hésite pas à me contacter</a>. 
+            <a href="/contact#contact-form" class="text-terracotta-600 dark:text-terracotta-400 underline hover:text-terracotta-700 dark:hover:text-terracotta-300 font-medium">n'hésite pas à me contacter</a>. 
             J'ai des outils à disposition pour t'aider à te situer et on peut le faire ensemble.
           </p>
         </div>
@@ -302,22 +302,22 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
   </Section>
 
   <!-- À qui s'adresse ce module -->
-  <Section id="target" title="À qui s'adresse ce module ?" className="bg-warm-50">
+  <Section id="target" title="À qui s'adresse ce module ?" className="bg-warm-50 dark:bg-warm-900">
     <div class="max-w-3xl mx-auto">
-      <p class="text-lg text-warm-700">
+      <p class="text-lg text-warm-700 dark:text-warm-200">
         {module.targetAudience}
       </p>
     </div>
   </Section>
 
   <!-- Ce qu'on y fait -->
-  <Section id="content" title="Ce qu'on y fait" className="bg-warm-50">
+  <Section id="content" title="Ce qu'on y fait" className="bg-warm-50 dark:bg-warm-900">
     <div class="max-w-3xl mx-auto">
       <ul class="space-y-3">
         {module.whatYouDo.map((item) => (
           <li class="flex items-start">
-            <span class="text-terracotta-600 mr-3 mt-1">•</span>
-            <span class="text-warm-700 text-lg">{item}</span>
+            <span class="text-terracotta-600 dark:text-terracotta-400 mr-3 mt-1">•</span>
+            <span class="text-warm-700 dark:text-warm-200 text-lg">{item}</span>
           </li>
         ))}
       </ul>
@@ -326,7 +326,7 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
 
   <!-- Contenu détaillé des séances (Théorie Débutant uniquement) -->
   {module.slug === 'theorie-debutant' && sessionContent && (
-    <Section id="detailed-content" title="Contenu détaillé des séances">
+    <Section id="detailed-content" title="Contenu détaillé des séances" className="bg-warm-50 dark:bg-warm-900">
       <div class="max-w-4xl mx-auto space-y-8">
         {sessionContent.map((session, index) => {
           const sessionDate = module.dates[index];
@@ -335,34 +335,34 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
           return (
             <div class={`rounded-lg shadow-md p-6 border ${
               isPast 
-                ? 'bg-warm-50 border-warm-200 opacity-60' 
-                : 'bg-white border-warm-200'
+                ? 'bg-warm-50 dark:bg-warm-800 border-warm-200 dark:border-warm-700 opacity-60' 
+                : 'bg-white dark:bg-warm-800 border-warm-200 dark:border-warm-700'
             }`}>
               <div class="flex items-center justify-between mb-3">
                 <h3 class={`text-2xl font-semibold mb-0 ${
-                  isPast ? 'text-warm-500' : 'text-warm-800'
+                  isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'
                 }`}>
                   Séance {session.number} — {session.title}
                 </h3>
                 {isPast && (
-                  <span class="px-3 py-1 text-sm font-medium bg-warm-200 text-warm-600 rounded">
+                  <span class="px-3 py-1 text-sm font-medium bg-warm-200 dark:bg-warm-700 text-warm-600 dark:text-warm-300 rounded">
                     Passée
                   </span>
                 )}
               </div>
               {sessionDate && (
-                <p class={`text-sm mb-4 ${isPast ? 'text-warm-400' : 'text-warm-600'}`}>
+                <p class={`text-sm mb-4 ${isPast ? 'text-warm-400 dark:text-warm-500' : 'text-warm-600 dark:text-warm-300'}`}>
                   📅 {sessionDate} 2026
                 </p>
               )}
-              <p class={`font-medium mb-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+              <p class={`font-medium mb-4 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
                 Objectif : {session.objective}
               </p>
               <div class="space-y-4">
                 {session.content.rappels && (
                   <div>
-                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>Rappels :</h4>
-                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'}`}>Rappels :</h4>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
                       {session.content.rappels.map((item) => (
                         <li>• {item}</li>
                       ))}
@@ -371,8 +371,8 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
                 )}
                 {session.content.rappel && (
                   <div>
-                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>Rappel :</h4>
-                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'}`}>Rappel :</h4>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
                       {session.content.rappel.map((item) => (
                         <li>• {item}</li>
                       ))}
@@ -381,10 +381,10 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
                 )}
                 {session.content.decouverte && (
                   <div>
-                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'}`}>
                       {session.content.decouverte.title}
                     </h4>
-                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
                       {session.content.decouverte.items.map((item) => (
                         <li>• {item}</li>
                       ))}
@@ -393,10 +393,10 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
                 )}
                 {session.content.harmonique && (
                   <div>
-                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'}`}>
                       {session.content.harmonique.title}
                     </h4>
-                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
                       {session.content.harmonique.items.map((item) => (
                         <li>• {item}</li>
                       ))}
@@ -405,10 +405,10 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
                 )}
                 {session.content.melodique && (
                   <div>
-                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'}`}>
                       {session.content.melodique.title}
                     </h4>
-                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
                       {session.content.melodique.items.map((item) => (
                         <li>• {item}</li>
                       ))}
@@ -417,10 +417,10 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
                 )}
                 {session.content.comparaison && (
                   <div>
-                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'}`}>
                       {session.content.comparaison.title}
                     </h4>
-                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
                       {session.content.comparaison.items.map((item) => (
                         <li>• {item}</li>
                       ))}
@@ -429,10 +429,10 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
                 )}
                 {session.content.construction && (
                   <div>
-                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'}`}>
                       {session.content.construction.title}
                     </h4>
-                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
                       {session.content.construction.items.map((item) => (
                         <li>• {item}</li>
                       ))}
@@ -441,17 +441,17 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
                 )}
                 {session.content.harmonisation && (
                   <div>
-                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'}`}>
                       {session.content.harmonisation}
                     </h4>
                   </div>
                 )}
                 {session.content.fonctions && (
                   <div>
-                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'}`}>
                       {session.content.fonctions.title}
                     </h4>
-                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
                       {session.content.fonctions.items.map((item) => (
                         <li>• {item}</li>
                       ))}
@@ -460,10 +460,10 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
                 )}
                 {session.content.suspendus && (
                   <div>
-                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'}`}>
                       {session.content.suspendus.title}
                     </h4>
-                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
                       {session.content.suspendus.items.map((item) => (
                         <li>• {item}</li>
                       ))}
@@ -472,10 +472,10 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
                 )}
                 {session.content.enrichis && (
                   <div>
-                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'}`}>
                       {session.content.enrichis.title}
                     </h4>
-                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
                       {session.content.enrichis.items.map((item) => (
                         <li>• {item}</li>
                       ))}
@@ -484,10 +484,10 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
                 )}
                 {session.content.pentatoniques && (
                   <div>
-                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'}`}>
                       {session.content.pentatoniques.title}
                     </h4>
-                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
                       {session.content.pentatoniques.items.map((item) => (
                         <li>• {item}</li>
                       ))}
@@ -496,10 +496,10 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
                 )}
                 {session.content.blues && (
                   <div>
-                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'}`}>
                       {session.content.blues.title}
                     </h4>
-                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                    <ul class={`space-y-2 ml-4 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
                       {session.content.blues.items.map((item) => (
                         <li>• {item}</li>
                       ))}
@@ -508,21 +508,21 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
                 )}
                 {session.content.lien && (
                   <div>
-                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'}`}>
                       {session.content.lien}
                     </h4>
                   </div>
                 )}
                 {session.content.impro && (
                   <div>
-                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'}`}>
                       {session.content.impro}
                     </h4>
                   </div>
                 )}
                 {session.content.synthese && (
                   <div>
-                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500' : 'text-warm-800'}`}>
+                    <h4 class={`text-lg font-semibold mb-2 ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-800 dark:text-warm-100'}`}>
                       {session.content.synthese}
                     </h4>
                   </div>
@@ -541,8 +541,8 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
       <ul class="space-y-3">
         {module.highlights.map((highlight) => (
           <li class="flex items-start">
-            <span class="text-terracotta-600 mr-3 mt-1">✓</span>
-            <span class="text-warm-700 text-lg">{highlight}</span>
+            <span class="text-terracotta-600 dark:text-terracotta-400 mr-3 mt-1">✓</span>
+            <span class="text-warm-700 dark:text-warm-200 text-lg">{highlight}</span>
           </li>
         ))}
       </ul>
@@ -550,18 +550,18 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
   </Section>
 
   <!-- Planning et dates -->
-  <Section id="schedule" title="Planning et dates 2026" className="bg-warm-50">
+  <Section id="schedule" title="Planning et dates 2026" className="bg-warm-50 dark:bg-warm-900">
     <div class="max-w-3xl mx-auto space-y-6">
       <div>
-        <h3 class="text-xl font-semibold text-warm-800 mb-2">
+        <h3 class="text-xl font-semibold text-warm-800 dark:text-warm-100 mb-2">
           Rythme des séances
         </h3>
-        <p class="text-warm-700">
+        <p class="text-warm-700 dark:text-warm-200">
           <strong>{module.schedule.day}</strong> de la <strong>
             {module.schedule.week === 'Semaine Théorie' ? (
-              <a href="/modules#organisation-mensuelle" class="text-warm-800 hover:text-terracotta-600 underline">Semaine Théorie</a>
+              <a href="/modules#organisation-mensuelle" class="text-warm-800 dark:text-warm-100 hover:text-terracotta-600 dark:hover:text-terracotta-400 underline">Semaine Théorie</a>
             ) : module.schedule.week === 'Semaine Pratique' ? (
-              <a href="/modules#organisation-mensuelle" class="text-warm-800 hover:text-terracotta-600 underline">Semaine Pratique</a>
+              <a href="/modules#organisation-mensuelle" class="text-warm-800 dark:text-warm-100 hover:text-terracotta-600 dark:hover:text-terracotta-400 underline">Semaine Pratique</a>
             ) : (
               module.schedule.week
             )}
@@ -571,20 +571,20 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
       </div>
 
       <div>
-        <h3 class="text-xl font-semibold text-warm-800 mb-4">
+        <h3 class="text-xl font-semibold text-warm-800 dark:text-warm-100 mb-4">
           Dates du cycle (janvier à mai 2026)
         </h3>
-        <div class="bg-white rounded-lg shadow-md p-6 border border-warm-200">
+        <div class="bg-white dark:bg-warm-800 rounded-lg shadow-md p-6 border border-warm-200 dark:border-warm-700">
           <ul class="space-y-2">
             {module.dates.map((date) => {
               const isPast = isDatePast(date);
               return (
                 <li class={`flex items-center ${isPast ? 'opacity-60' : ''}`}>
-                  <span class={`mr-3 ${isPast ? 'text-warm-400' : 'text-terracotta-600'}`}>📅</span>
-                  <span class={`text-lg ${isPast ? 'text-warm-500' : 'text-warm-700'}`}>
+                  <span class={`mr-3 ${isPast ? 'text-warm-400 dark:text-warm-500' : 'text-terracotta-600 dark:text-terracotta-400'}`}>📅</span>
+                  <span class={`text-lg ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
                     {date} 2026
                     {isPast && (
-                      <span class="ml-2 px-2 py-0.5 text-xs font-medium bg-warm-200 text-warm-600 rounded">
+                      <span class="ml-2 px-2 py-0.5 text-xs font-medium bg-warm-200 dark:bg-warm-700 text-warm-600 dark:text-warm-300 rounded">
                         Passée
                       </span>
                     )}
@@ -596,11 +596,11 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
         </div>
       </div>
 
-      <div class="bg-warm-100 rounded-lg p-6">
-        <p class="text-warm-800 mb-2">
+      <div class="bg-warm-100 dark:bg-warm-800 rounded-lg p-6">
+        <p class="text-warm-800 dark:text-warm-100 mb-2">
           <strong>Lieu :</strong> {pricingInfo.location}
         </p>
-        <p class="text-warm-700">
+        <p class="text-warm-700 dark:text-warm-200">
           <strong>Capacité :</strong> {formatCapacity(module.capacity)} par module
         </p>
       </div>
@@ -608,24 +608,24 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
   </Section>
 
   <!-- Tarifs -->
-  <Section id="pricing" title="Tarifs">
+  <Section id="pricing" title="Tarifs" className="bg-warm-50 dark:bg-warm-900">
     <div class="max-w-3xl mx-auto">
-      <p class="text-lg text-warm-700 mb-4">
+      <p class="text-lg text-warm-700 dark:text-warm-200 mb-4">
         Les tarifs sont dégressifs selon le nombre de modules choisis. 
         Un groupe est constitué dès le début du cycle, et une fois lancé·e, c'est bien de rester sur la suite. 
         <strong>Tu peux aussi rejoindre en cours de route sans souci</strong> – on s'adapte à ta situation.
       </p>
-      <div class="bg-warm-100 rounded-lg p-6 mb-6">
-        <p class="text-warm-800 mb-2">
+      <div class="bg-warm-100 dark:bg-warm-800 rounded-lg p-6 mb-6">
+        <p class="text-warm-800 dark:text-warm-100 mb-2">
           <strong>Exemple :</strong> Si tu choisis uniquement ce module, 
-          c'est <strong class="text-terracotta-700 text-xl">{Math.round(pricingTiers[0].cyclePrice / 5)} €/mois</strong> 
+          c'est <strong class="text-terracotta-700 dark:text-terracotta-300 text-xl">{Math.round(pricingTiers[0].cyclePrice / 5)} €/mois</strong> 
           (soit {pricingTiers[0].cyclePrice} € pour les 5 mois).
         </p>
-        <p class="text-warm-700 text-sm mb-3">
+        <p class="text-warm-700 dark:text-warm-200 text-sm mb-3">
           Si tu combines plusieurs modules, les tarifs sont dégressifs. 
-          Voir la <a href="/#tarifs" class="text-terracotta-600 underline hover:text-terracotta-700">page d'accueil</a> pour le détail complet.
+          Voir la <a href="/#tarifs" class="text-terracotta-600 dark:text-terracotta-400 underline hover:text-terracotta-700 dark:hover:text-terracotta-300">page d'accueil</a> pour le détail complet.
         </p>
-        <p class="text-warm-700 text-sm">
+        <p class="text-warm-700 dark:text-warm-200 text-sm">
           Plusieurs modalités de paiement sont proposées (en 1 fois, 2 fois ou 3 fois) 
           pour t'accompagner selon ta situation.
         </p>
@@ -634,24 +634,24 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
   </Section>
 
   <!-- CTA inscription -->
-  <Section id="cta" className="bg-gradient-to-b from-terracotta-50 to-warm-100">
+  <Section id="cta" className="bg-gradient-to-b from-terracotta-50 dark:from-terracotta-900 to-warm-100 dark:to-warm-800">
     <div class="text-center max-w-2xl mx-auto">
       {module.comingSoon ? (
         <>
-          <h2 class="text-3xl font-bold text-warm-800 mb-4">
+          <h2 class="text-3xl font-bold text-warm-800 dark:text-warm-100 mb-4">
             Ce module t'intéresse ?
           </h2>
-          <div class="bg-white rounded-lg p-6 mb-6 border border-warm-200 text-left">
-            <p class="text-lg text-warm-700 mb-4">
+          <div class="bg-white dark:bg-warm-800 rounded-lg p-6 mb-6 border border-warm-200 dark:border-warm-700 text-left">
+            <p class="text-lg text-warm-700 dark:text-warm-200 mb-4">
               Ce module est actuellement en pause, mais tu peux <strong>demander des informations</strong> dès maintenant 
               pour être informé·e dès qu'il sera disponible.
             </p>
-            <p class="text-warm-700 mb-4">
+            <p class="text-warm-700 dark:text-warm-200 mb-4">
               Dans le formulaire de demande d'informations, tu pourras <strong>mettre un message dans la section "Commentaire"</strong> 
               pour me situer sur ton projet, tes envies, tes questions ou tes attentes concernant ce module. 
               Cela m'aidera à mieux comprendre tes besoins et à te recontacter au bon moment.
             </p>
-            <p class="text-warm-600 text-sm italic">
+            <p class="text-warm-600 dark:text-warm-300 text-sm italic">
               💡 Même si le module n'est pas encore actif, ta demande d'informations me permet de voir l'intérêt 
               et de te tenir informé·e de son ouverture prochaine.
             </p>
@@ -663,10 +663,10 @@ const sessionContent = module.slug === 'theorie-debutant' ? [
         </>
       ) : (
         <>
-          <h2 class="text-3xl font-bold text-warm-800 mb-4">
+          <h2 class="text-3xl font-bold text-warm-800 dark:text-warm-100 mb-4">
             Intéressé·e par ce module ?
           </h2>
-          <p class="text-lg text-warm-700 mb-8">
+          <p class="text-lg text-warm-700 dark:text-warm-200 mb-8">
             Inscris-toi ou pose-moi tes questions via le formulaire de contact.
           </p>
           <CTA 

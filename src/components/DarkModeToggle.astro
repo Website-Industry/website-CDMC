@@ -1,0 +1,104 @@
+---
+---
+
+<button
+  type="button"
+  id="dark-mode-toggle"
+  aria-label="Basculer entre le mode clair et sombre"
+  class="relative inline-flex items-center gap-2 px-3 py-2 rounded-lg text-warm-700 dark:text-warm-200 bg-warm-100 dark:bg-warm-800 hover:bg-warm-200 dark:hover:bg-warm-700 focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:ring-offset-2 transition-all duration-200"
+  title="Basculer le thème"
+  aria-pressed="false"
+>
+  <!-- Icône soleil (visible en dark mode = on veut passer en light) -->
+  <svg
+    id="sun-icon"
+    class="w-5 h-5 hidden dark:block transition-opacity"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+    />
+  </svg>
+  <!-- Icône lune (visible en light mode = on veut passer en dark) -->
+  <svg
+    id="moon-icon"
+    class="w-5 h-5 block dark:hidden transition-opacity"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+    />
+  </svg>
+  <!-- Indicateur de texte pour clarifier l'état actuel -->
+  <span class="text-sm font-medium">
+    <span class="dark:hidden">Mode sombre</span>
+    <span class="hidden dark:inline">Mode clair</span>
+  </span>
+</button>
+
+<script is:inline>
+  // Gestion du toggle avec event listener
+  (function() {
+    function updateAriaPressed() {
+      const toggle = document.getElementById('dark-mode-toggle');
+      if (toggle) {
+        const isDark = document.documentElement.classList.contains('dark');
+        toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+      }
+    }
+    
+    function handleToggle() {
+      // Utiliser la fonction globale toggleTheme
+      if (typeof window.toggleTheme === 'function') {
+        window.toggleTheme();
+        updateAriaPressed();
+      } else {
+        // Fallback si la fonction n'est pas encore disponible
+        const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        if (newTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+        localStorage.setItem('cdmc-theme', newTheme);
+        updateAriaPressed();
+      }
+    }
+    
+    // Attacher l'event listener au chargement
+    function initToggle() {
+      const toggle = document.getElementById('dark-mode-toggle');
+      if (toggle) {
+        toggle.addEventListener('click', handleToggle);
+        updateAriaPressed();
+      }
+    }
+    
+    // Initialiser au chargement
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initToggle);
+    } else {
+      initToggle();
+    }
+    
+    // Observer les changements de classe sur html pour mettre à jour aria-pressed
+    const observer = new MutationObserver(updateAriaPressed);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  })();
+</script>

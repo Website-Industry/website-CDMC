@@ -58,7 +58,7 @@ const siteName = 'CDMC - Les cours de musique les plus chill de Toulouse';
     
     <title>{title}</title>
   </head>
-  <body class="min-h-screen flex flex-col bg-warm-50 text-warm-900 antialiased">
+  <body class="min-h-screen flex flex-col bg-warm-50 dark:bg-warm-900 text-warm-900 dark:text-warm-50 antialiased transition-colors duration-200">
     <SkipLink />
     <Header />
     <main id="main-content" class="flex-grow">
@@ -69,6 +69,31 @@ const siteName = 'CDMC - Les cours de musique les plus chill de Toulouse';
 </html>
 
 <style is:global>
+  :root {
+    /* Variables de couleurs depuis la palette Tailwind */
+    --color-warm-50: #faf8f5;
+    --color-warm-100: #f5f1e8;
+    --color-warm-200: #e8ddd0;
+    --color-warm-300: #d4c4b0;
+    --color-warm-400: #b89d7f;
+    --color-warm-500: #9d7a5a;
+    --color-warm-600: #7d6149;
+    --color-warm-700: #5d4838;
+    --color-warm-800: #3e3026;
+    --color-warm-900: #1f1813;
+    
+    --color-terracotta-50: #fef5f2;
+    --color-terracotta-100: #fde8e0;
+    --color-terracotta-200: #fbd5c8;
+    --color-terracotta-300: #f8b8a5;
+    --color-terracotta-400: #f49072;
+    --color-terracotta-500: #f06d4a;
+    --color-terracotta-600: #e14f2a;
+    --color-terracotta-700: #c03d1f;
+    --color-terracotta-800: #9e341d;
+    --color-terracotta-900: #82301c;
+  }
+
   * {
     box-sizing: border-box;
   }
@@ -101,8 +126,62 @@ const siteName = 'CDMC - Les cours de musique les plus chill de Toulouse';
 
   /* Focus visible pour l'accessibilité */
   :focus-visible {
-    outline: 2px solid #f06d4a;
+    outline: 2px solid var(--color-terracotta-500);
     outline-offset: 2px;
   }
+
+  /* Transition douce pour le changement de thème */
+  * {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
 </style>
+
+<script is:inline>
+  // Gestion du dark mode avec localStorage et préférence système
+  (function() {
+    const themeKey = 'cdmc-theme';
+    const getStoredTheme = () => localStorage.getItem(themeKey);
+    const setStoredTheme = (theme) => localStorage.setItem(themeKey, theme);
+    
+    const getSystemTheme = () => {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    
+    const applyTheme = (theme) => {
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    };
+    
+    // Appliquer le thème au chargement
+    const storedTheme = getStoredTheme();
+    const theme = storedTheme || getSystemTheme();
+    applyTheme(theme);
+    
+    // Écouter les changements de préférence système
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!getStoredTheme()) {
+        applyTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+    
+    // Exposer la fonction pour le toggle - doit être globale
+    window.toggleTheme = function() {
+      const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+      setStoredTheme(newTheme);
+      return newTheme;
+    };
+    
+    // Exposer la fonction pour obtenir le thème actuel
+    window.getCurrentTheme = function() {
+      return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    };
+  })();
+</script>
 

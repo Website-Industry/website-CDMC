@@ -1,10 +1,19 @@
 /** @type {import('tailwindcss').Config} */
+/**
+ * Configuration Tailwind CSS
+ * 
+ * NOTE: Les couleurs définies ici sont synchronisées avec les variables CSS
+ * dans src/layouts/BaseLayout.astro. Si tu modifies une couleur ici,
+ * pense à mettre à jour les variables CSS correspondantes.
+ */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  darkMode: 'class', // Active le dark mode avec la classe 'dark'
   theme: {
     extend: {
       colors: {
         // Palette chaleureuse : beiges, ocres, terracotta
+        // Ces couleurs sont également définies comme variables CSS dans BaseLayout.astro
         warm: {
           50: '#faf8f5',
           100: '#f5f1e8',

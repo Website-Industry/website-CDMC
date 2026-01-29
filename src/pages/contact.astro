@@ -11,12 +11,12 @@ const moduleParam = url.searchParams.get('module');
   title="Contact & Inscription | CDMC"
   description="Contacte CDMC pour en savoir plus ou demander des informations sur les cours de musique à Toulouse. Formulaire de contact et demande d'informations."
 >
-  <Section id="contact-hero" className="bg-gradient-to-b from-warm-100 to-warm-50">
+  <Section id="contact-hero" className="bg-gradient-to-b from-warm-100 dark:from-warm-800 to-warm-50 dark:to-warm-900">
     <div class="max-w-3xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-bold text-warm-800 mb-6">
+      <h1 class="text-4xl md:text-5xl font-bold text-warm-800 dark:text-warm-100 mb-6">
         Contact & Inscription
       </h1>
-      <p class="text-xl text-warm-700">
+      <p class="text-xl text-warm-700 dark:text-warm-200">
         Tu veux en savoir plus, t'inscrire, poser une question ? 
         Utilise l'un des formulaires ci-dessous.
       </p>
@@ -25,13 +25,13 @@ const moduleParam = url.searchParams.get('module');
 
   <Section id="inscription-form" title="Demande d'informations">
     <div class="max-w-2xl mx-auto">
-      <p class="text-warm-700 mb-6">
+      <p class="text-warm-700 dark:text-warm-200 mb-6">
         Tu veux en savoir plus sur un ou plusieurs modules ? Remplis ce formulaire de demande d'informations. 
         Je te recontacterai rapidement pour répondre à tes questions et discuter de ton projet.
       </p>
       {moduleParam && (
-        <div class="bg-terracotta-50 border border-terracotta-200 rounded-lg p-4 mb-6">
-          <p class="text-terracotta-800">
+        <div class="bg-terracotta-50 dark:bg-terracotta-900 border border-terracotta-200 dark:border-terracotta-700 rounded-lg p-4 mb-6">
+          <p class="text-terracotta-800 dark:text-terracotta-200">
             <strong>Module présélectionné :</strong> Le module "{moduleParam}" est présélectionné ci-dessous. 
             Tu peux en choisir d'autres si tu veux.
           </p>
@@ -69,9 +69,9 @@ const moduleParam = url.searchParams.get('module');
     </div>
   </Section>
 
-  <Section id="contact-form" title="Formulaire de contact" className="bg-warm-50">
+  <Section id="contact-form" title="Formulaire de contact" className="bg-warm-50 dark:bg-warm-900">
     <div class="max-w-2xl mx-auto">
-      <p class="text-warm-700 mb-6">
+      <p class="text-warm-700 dark:text-warm-200 mb-6">
         Pour toute question générale, demande d'information, ou simplement pour discuter, 
         utilise ce formulaire.
       </p>
@@ -81,10 +81,10 @@ const moduleParam = url.searchParams.get('module');
 
   <Section id="infos-complementaires">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-2xl font-semibold text-warm-800 mb-4">
+      <h2 class="text-2xl font-semibold text-warm-800 dark:text-warm-100 mb-4">
         Informations complémentaires
       </h2>
-      <div class="space-y-4 text-warm-700">
+      <div class="space-y-4 text-warm-700 dark:text-warm-200">
         <p>
           <strong>Réponse rapide :</strong> Je réponds généralement sous 24-48h à tous les messages.
         </p>
