@@ -6,6 +6,40 @@ import CTA from '../../components/CTA.astro';
 import { modules } from '../../data/modules';
 import { pricingInfo } from '../../data/pricing';
 
+// Fonction pour déterminer si une date est passée
+function isDatePast(dateStr: string): boolean {
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  
+  const monthNames: Record<string, number> = {
+    'janvier': 0,
+    'février': 1,
+    'mars': 2,
+    'avril': 3,
+    'mai': 4,
+    'juin': 5,
+    'juillet': 6,
+    'août': 7,
+    'septembre': 8,
+    'octobre': 9,
+    'novembre': 10,
+    'décembre': 11,
+  };
+  
+  const match = dateStr.match(/^(\d+)\s+(.+)$/);
+  if (!match) return false;
+  
+  const day = parseInt(match[1]);
+  const monthName = match[2].toLowerCase();
+  const month = monthNames[monthName];
+  
+  if (month === undefined) return false;
+  
+  // On assume que les dates sont en 2026 (année du cycle)
+  const date = new Date(2026, month, day);
+  return date < now;
+}
+
 // Préparer les données pour le tableau récapitulatif des dates
 const niveauLabels: Record<1 | 2 | 3, string> = {
   1: 'Débutant',
@@ -21,6 +55,7 @@ const allDates: Array<{
   slug: string;
   comingSoon: boolean;
   almostFull: boolean;
+  isPast: boolean;
 }> = [];
 
 modules.forEach((module) => {
@@ -41,6 +76,7 @@ modules.forEach((module) => {
       slug: module.slug,
       comingSoon: module.comingSoon || false,
       almostFull: module.almostFull || false,
+      isPast: isDatePast(date),
     });
   });
 });
@@ -218,40 +254,58 @@ allDates.sort((a, b) => {
               </tr>
             </thead>
             <tbody>
-              {allDates.map((item, index) => (
-                <tr class={`${index % 2 === 0 ? 'bg-white dark:bg-warm-800' : 'bg-warm-50 dark:bg-warm-700'} ${item.comingSoon ? 'opacity-60' : ''}`}>
-                  <td class="border border-warm-300 dark:border-warm-600 px-4 py-3 text-warm-700 dark:text-warm-200">
-                    <span class="font-medium">{item.week}</span>
-                  </td>
-                  <td class="border border-warm-300 dark:border-warm-600 px-4 py-3 text-warm-700 dark:text-warm-200">
-                    {item.day}
-                  </td>
-                  <td class="border border-warm-300 dark:border-warm-600 px-4 py-3 text-warm-700 dark:text-warm-200">
-                    <div class="flex items-center gap-2">
-                      <a href={`/modules/${item.slug}`} class={`underline font-medium ${
-                        item.comingSoon 
-                          ? 'text-warm-400 dark:text-warm-500 hover:text-warm-500 dark:hover:text-warm-400' 
-                          : 'text-terracotta-600 dark:text-terracotta-400 hover:text-terracotta-700 dark:hover:text-terracotta-300'
-                      }`}>
-                        {item.course}
-                      </a>
-                      {item.comingSoon && (
-                        <span class="px-2 py-0.5 text-xs font-medium bg-warm-200 dark:bg-warm-700 text-warm-600 dark:text-warm-300 rounded">
-                          Prochainement
+              {allDates.map((item, index) => {
+                const isPast = item.isPast;
+                return (
+                  <tr class={`${index % 2 === 0 ? 'bg-white dark:bg-warm-800' : 'bg-warm-50 dark:bg-warm-700'} ${item.comingSoon || isPast ? 'opacity-60' : ''}`}>
+                    <td class="border border-warm-300 dark:border-warm-600 px-4 py-3">
+                      <span class={`font-medium ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
+                        {item.week}
+                      </span>
+                    </td>
+                    <td class="border border-warm-300 dark:border-warm-600 px-4 py-3">
+                      <span class={isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}>
+                        {item.day}
+                      </span>
+                    </td>
+                    <td class="border border-warm-300 dark:border-warm-600 px-4 py-3">
+                      <div class="flex items-center gap-2">
+                        <a href={`/modules/${item.slug}`} class={`underline font-medium ${
+                          item.comingSoon 
+                            ? 'text-warm-400 dark:text-warm-500 hover:text-warm-500 dark:hover:text-warm-400' 
+                            : isPast
+                            ? 'text-warm-500 dark:text-warm-400 hover:text-warm-600 dark:hover:text-warm-300'
+                            : 'text-terracotta-600 dark:text-terracotta-400 hover:text-terracotta-700 dark:hover:text-terracotta-300'
+                        }`}>
+                          {item.course}
+                        </a>
+                        {item.comingSoon && (
+                          <span class="px-2 py-0.5 text-xs font-medium bg-warm-200 dark:bg-warm-700 text-warm-600 dark:text-warm-300 rounded">
+                            Prochainement
+                          </span>
+                        )}
+                        {item.almostFull && (
+                          <span class="px-2 py-0.5 text-xs font-medium bg-terracotta-100 dark:bg-terracotta-900 text-terracotta-700 dark:text-terracotta-300 rounded">
+                            Bientôt complet
+                          </span>
+                        )}
+                      </div>
+                    </td>
+                    <td class="border border-warm-300 dark:border-warm-600 px-4 py-3">
+                      <div class="flex items-center gap-2">
+                        <span class={`font-medium ${isPast ? 'text-warm-500 dark:text-warm-400' : 'text-warm-700 dark:text-warm-200'}`}>
+                          {item.date} 2026
                         </span>
-                      )}
-                      {item.almostFull && (
-                        <span class="px-2 py-0.5 text-xs font-medium bg-terracotta-100 dark:bg-terracotta-900 text-terracotta-700 dark:text-terracotta-300 rounded">
-                          Bientôt complet
-                        </span>
-                      )}
-                    </div>
-                  </td>
-                  <td class="border border-warm-300 dark:border-warm-600 px-4 py-3 text-warm-700 dark:text-warm-200 font-medium">
-                    {item.date} 2026
-                  </td>
-                </tr>
-              ))}
+                        {isPast && (
+                          <span class="px-2 py-0.5 text-xs font-medium bg-warm-200 dark:bg-warm-700 text-warm-600 dark:text-warm-300 rounded">
+                            Passée
+                          </span>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
