@@ -38,7 +38,7 @@ export const paymentOptions: PaymentOption[] = [
   {
     id: 'full',
     label: 'Paiement en une fois',
-    description: 'Paiement du cycle complet au début',
+    description: 'Paiement en une fois',
     installments: 1,
     getAmount: (total) => [total],
   },
@@ -67,7 +67,7 @@ export const paymentOptions: PaymentOption[] = [
 export const pricingInfo = {
   cycleDuration: 5,
   cycleMonths: 'janvier à mai',
-  commitment: 'Engagement sur 5 mois',
+  commitment: 'Rejoindre le groupe',
   sessionDuration: '2h30',
   capacity: '4 à 9 participant·es par module',
   location: 'Dans un grand salon aménagé, à Toulouse',

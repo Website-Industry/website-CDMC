@@ -11,12 +11,17 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Section témoignages sur la page d'accueil avec 3 témoignages du groupe CDMC 2025 - Théorie Débutant
 - Badges/tags visuels pour identifier le groupe et le module dans les témoignages
 - Design de badges arrondis avec bordures et ombres pour un rendu plus physique
+- FAQ sur la possibilité de rejoindre un module en cours de route
 
 ### Changed
 - Inversion de l'ordre des sections : "Esprit & pédagogie" avant "Tarifs & engagement"
 - Refonte du concept de "pré-inscription" vers "demande d'informations" sur toutes les pages
 - Remplacement de tous les libellés "Je me pré-inscris" par "Demander des informations"
 - Adaptation des messages et formulaires pour un ton moins engageant, plus informatif
+- Refonte du message sur l'engagement : mise en avant de la possibilité de rejoindre en cours de route
+- Remplacement des mentions d'engagement obligatoire par un message de flexibilité
+- Adaptation des sections "Engagement" en "Rejoindre le groupe" sur toutes les pages
+- Mise à jour de la FAQ paiement pour mentionner l'adaptation du paiement si on rejoint en cours de route
 - Correction de l'attribution des témoignages (Raf et Flo)
 
 ### Fixed
